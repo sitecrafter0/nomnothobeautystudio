@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skincare Tips for Radiant Skin — Nomnotho Beauty Studio</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Blog-specific styles */
+    .blog-header {
+      margin-bottom: 3rem;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 2rem;
+    }
+    
+    .blog-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+      font-weight: 600;
+    }
+    
+    .blog-intro {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      margin-top: 1.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+    
+    .blog-section {
+      margin-bottom: 3.5rem;
+      padding: 0;
+    }
+    
+    .blog-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--gold);
+      color: var(--black);
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .blog-section h3 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--black);
+    }
+    
+    .blog-section p {
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+    }
+    
+    .blog-section ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+    
+    .blog-section li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      color: var(--dark-gray);
+    }
+    
+    .blog-section li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: bold;
+    }
+    
+    .blog-image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .blog-image-grid img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .blog-image-grid img:hover {
+      transform: scale(1.05);
+    }
+    
+    .skin-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .skin-type-card {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(245, 245, 245, 1) 100%);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .skin-type-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: var(--black);
+    }
+    
+    .skin-type-card p {
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+      margin: 0;
+    }
+    
+    .highlight-box, .warning-box {
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      border-left: 4px solid var(--gold);
+    }
+    
+    .highlight-box {
+      background-color: rgba(212, 175, 55, 0.08);
+      color: var(--dark-gray);
+    }
+    
+    .warning-box {
+      background-color: rgba(221, 160, 160, 0.1);
+      border-left-color: #dd6b6b;
+      color: var(--dark-gray);
+    }
+    
+    .consistency-checklist {
+      background: linear-gradient(135deg, rgba(245, 245, 245, 1) 0%, rgba(212, 175, 55, 0.05) 100%);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    
+    .consistency-checklist h3 {
+      margin-top: 0;
+    }
+    
+    .consistency-checklist ul {
+      margin-bottom: 0;
+    }
+    
+    .consistency-checklist li {
+      padding-left: 2rem;
+    }
+    
+    .consistency-checklist li:before {
+      content: "☑";
+      left: 0;
+      color: var(--gold);
+    }
+    
+    .final-thoughts {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.02) 0%, rgba(212, 175, 55, 0.08) 100%);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 2px solid var(--gold);
+    }
+    
+    .final-thoughts p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .blog-cta-box {
+      background: var(--black);
+      color: var(--ivory);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .blog-cta-box a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: text-decoration 0.2s;
+    }
+    
+    .blog-cta-box a:hover {
+      text-decoration: underline;
+    }
+    
+    .blog-post {
+      padding: 3rem 0;
+      background: var(--ivory);
+    }
+    
+    @media (max-width: 768px) {
+      .blog-header h1 {
+        font-size: 2rem;
+      }
+      
+      .blog-image-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skin-types-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><h1>Nomnotho Beauty</h1><p class="tagline">Studio</p></div>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../shop.html">Shop</a></li>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../customer-care.html">Customer Care</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li class="account-icons"><a href="../account.html"><i class="fas fa-user"></i></a><a href="../cart.html"><i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="blog-post">
+      <div class="container">
+        <header class="blog-header">
+          <h1>Skincare Tips for Radiant Skin ✨</h1>
+          <p class="muted">Published Feb 14, 2026 · By Nomnotho Beauty Studio · 10 min read</p>
+          <p class="blog-intro">Healthy, glowing skin isn't just about makeup or filters — it's about consistent care, smart habits, and understanding what your skin truly needs. Whether you're dealing with dryness, acne, or dullness, these science-backed tips will help you achieve naturally radiant skin.</p>
+        </header>
+
+        <article class="blog-content">
+          <!-- Section 1: Know Your Skin Type -->
+          <section class="blog-section">
+            <h2><span class="section-number">1</span> Know Your Skin Type</h2>
+            <p>Before building a skincare routine, it's essential to understand your unique skin type. This knowledge is the foundation of an effective routine tailored to your needs:</p>
+            <div class="skin-types-grid">
+              <div class="skin-type-card">
+                <h3>Oily Skin</h3>
+                <p>Characterized by excess sebum production, leading to shine and frequent breakouts. Requires lightweight, non-comedogenic products.</p>
+              </div>
+              <div class="skin-type-card">
+                <h3>Dry Skin</h3>
+                <p>Feels tight, flaky, or rough with visible fine lines. Needs rich moisturizers and hydrating serums to restore the skin barrier.</p>
+              </div>
+              <div class="skin-type-card">
+                <h3>Combination Skin</h3>
+                <p>Oily in some areas (typically the T-zone) and dry in others. Benefits from targeted, zone-specific treatments.</p>
+              </div>
+              <div class="skin-type-card">
+                <h3>Sensitive Skin</h3>
+                <p>Easily irritated or reactive to products. Requires gentle, fragrance-free formulations with minimal active ingredients.</p>
+              </div>
+            </div>
+            <p><strong>Pro tip:</strong> Using products suited for your skin type makes all the difference in achieving visible results within weeks.</p>
+          </section>
+
+          <!-- Section 2: Cleanse Gently -->
+          <section class="blog-section">
+            <h2><span class="section-number">2</span> Cleanse Gently (But Effectively)</h2>
+            <p>Proper cleansing is the cornerstone of any skincare routine. It removes dirt, oil, makeup residue, and environmental pollutants that accumulate throughout the day and can dull your complexion.</p>
+            <div class="blog-image-grid">
+              <img src="https://www.kanvasbeauty.com.au/cdn/shop/articles/instagram_portrait_size_54_1600x.jpg?v=1671893007" alt="Gentle face cleansing">
+              <img src="https://us.oxygenceuticals.com/cdn/shop/files/Gentle_Facial_Cleansing_Lotion_Texture_on_Hand.jpg?v=1765855328" alt="Cleansing lotion texture">
+            </div>
+            <h3>Essential Cleansing Tips:</h3>
+            <ul>
+              <li><strong>Wash twice daily:</strong> Morning to remove overnight oil buildup and night to eliminate daily impurities</li>
+              <li><strong>Avoid harsh soaps:</strong> They strip natural oils and compromise your skin barrier, leading to irritation</li>
+              <li><strong>Try double cleansing:</strong> Perfect for makeup lovers — oil cleanser first, then water-based cleanser</li>
+              <li><strong>Use lukewarm water:</strong> Hot water can cause irritation; lukewarm is ideal for all skin types</li>
+            </ul>
+          </section>
+
+          <!-- Section 3: Never Skip Sunscreen -->
+          <section class="blog-section">
+            <h2><span class="section-number">3</span> Never Skip Sunscreen ☀️</h2>
+            <p>Sun exposure is <strong>one of the biggest culprits</strong> of premature aging, hyperpigmentation, dark spots, and overall skin dullness. UV damage is cumulative, making daily sunscreen application non-negotiable.</p>
+            <div class="blog-image-grid">
+              <img src="https://www.100percentpure.com/cdn/shop/articles/large-HP-applying_moisturizing_skincare_cream_1024x.jpg?v=1621346664" alt="Applying sunscreen">
+              <img src="https://standardprocedure.com/cdn/shop/files/SPF-50-Sunscreen-500-ml-Standard-Procedure-1.jpg?v=1770632714&width=480" alt="SPF 50 sunscreen">
+            </div>
+            <h3>What to Look For:</h3>
+            <ul>
+              <li><strong>Broad-spectrum SPF 30 or higher:</strong> Protects against both UVA and UVB rays</li>
+              <li><strong>Lightweight, non-greasy formulas:</strong> Won't clog pores or leave a white cast</li>
+              <li><strong>Reapply every 2–3 hours:</strong> Essential if you're outdoors or sweating</li>
+              <li><strong>Use mineral or hybrid sunscreens:</strong> Better for sensitive skin types</li>
+            </ul>
+            <p class="highlight-box">💡 <strong>Fun fact:</strong> Sunscreen is arguably your best anti-aging product. Consistent use can prevent up to 90% of visible aging signs!</p>
+          </section>
+
+          <!-- Section 4: Hydrate Inside and Out -->
+          <section class="blog-section">
+            <h2><span class="section-number">4</span> Hydrate Inside and Out 💧</h2>
+            <p>Hydration is the secret to plump, glowing, youthful skin. When your skin is well-hydrated, it appears fuller, fine lines are minimized, and your natural radiance shines through.</p>
+            <div class="blog-image-grid">
+              <img src="https://drbaileyskincare.com/cdn/shop/articles/moisturizer_application_AdobeStock_301380709_1.jpg?v=1603484821" alt="Applying moisturizer">
+              <img src="https://i.pinimg.com/564x/80/f6/bb/80f6bb7d56bd11d7d6a20f71e360d611.jpg" alt="Hydrating skincare">
+            </div>
+            <h3>Hydration Strategy:</h3>
+            <ul>
+              <li><strong>Use the right moisturizer:</strong> Choose one suited to your skin type — lighter gels for oily skin, richer creams for dry skin</li>
+              <li><strong>Layer hydrating serums:</strong> Hyaluronic acid, glycerin, and peptides lock in moisture at a cellular level</li>
+              <li><strong>Drink plenty of water:</strong> Aim for 8–10 glasses daily to support skin hydration from within</li>
+              <li><strong>Use a humidifier:</strong> Especially beneficial in dry climates or during winter months</li>
+            </ul>
+            <p><strong>Result:</strong> Well-hydrated skin = natural glow, improved elasticity, and a smoother texture.</p>
+          </section>
+
+          <!-- Section 5: Exfoliate Wisely -->
+          <section class="blog-section">
+            <h2><span class="section-number">5</span> Exfoliate (But Don't Overdo It) 🧖</h2>
+            <p>Exfoliation is crucial for removing dead skin cells that accumulate on the surface and make your complexion appear dull and uneven. However, over-exfoliation can damage your skin barrier.</p>
+            <div class="blog-image-grid">
+              <img src="https://i.shgcdn.com/f9e4de57-519e-4997-9098-c2f98de9d8db/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="Exfoliation results">
+              <img src="https://beautysense.ca/media/magefan_blog/BeautySense-exfoliation-face-mask.jpg" alt="Face exfoliation mask">
+            </div>
+            <h3>Smart Exfoliation Tips:</h3>
+            <ul>
+              <li><strong>Frequency matters:</strong> 1–2 times per week is ideal; more can irritate and damage skin</li>
+              <li><strong>Choose chemical exfoliants:</strong> AHAs (glycolic, lactic acid) and BHAs (salicylic acid) provide smoother, gentler results than physical scrubs</li>
+              <li><strong>Go easy on sensitive skin:</strong> Avoid harsh physical scrubs; opt for mild chemical exfoliants instead</li>
+              <li><strong>Never mix exfoliants:</strong> Using too many exfoliating products at once compromises your skin barrier</li>
+            </ul>
+            <p class="warning-box">⚠️ <strong>Warning:</strong> Over-exfoliating can lead to redness, sensitivity, and compromised skin barrier. Less is more!</p>
+          </section>
+
+          <!-- Section 6: Eat Skin-Loving Foods -->
+          <section class="blog-section">
+            <h2><span class="section-number">6</span> Eat Skin-Loving Foods 🥑</h2>
+            <p>The saying "you are what you eat" applies to your skin too. Your diet directly reflects on your complexion. Nutrient-rich foods provide the building blocks for healthy, glowing skin from the inside out.</p>
+            <div class="blog-image-grid">
+              <img src="https://miro.medium.com/1%2AbSoL8O6KcqrsjAGgfKUB-g.jpeg" alt="Healthy skin foods">
+              <img src="https://images.immediate.co.uk/production/volatile/sites/30/2023/03/Omega-3-salmon-e61b918.jpg?quality=90&resize=440%2C400" alt="Salmon omega-3">
+            </div>
+            <h3>Skin-Boosting Foods:</h3>
+            <ul>
+              <li><strong>Fruits & vegetables:</strong> Rich in antioxidants (vitamins A, C, E) that protect against free radical damage</li>
+              <li><strong>Omega-3 fatty acids:</strong> Found in salmon, mackerel, walnuts, and chia seeds — reduce inflammation and support skin barrier</li>
+              <li><strong>Vitamin C sources:</strong> Citrus, berries, and leafy greens promote collagen production and brighten skin</li>
+              <li><strong>Green tea:</strong> Packed with polyphenols that protect skin from UV damage</li>
+            </ul>
+            <p><strong>Bonus benefit:</strong> Reducing sugar and processed foods decreases inflammation, leading to fewer breakouts and clearer skin.</p>
+          </section>
+
+          <!-- Section 7: Get Quality Sleep -->
+          <section class="blog-section">
+            <h2><span class="section-number">7</span> Get Enough Quality Sleep 😴</h2>
+            <p>During sleep, your body goes into repair mode. This is when skin cells regenerate, collagen is produced, and your skin barrier strengthens. Skipping sleep directly impacts your complexion.</p>
+            <div class="blog-image-grid">
+              <img src="https://www.summithealth.com/sites/default/files/2025-01/Young%20woman%20sleeping%20peacefully.png" alt="Peaceful sleep">
+              <img src="https://everlastingfabric.com/cdn/shop/files/silky-ruffle-pillowcases-pillowcases-ever-lasting-ruff011-wt-pillowcase-2pc-4326282.jpg?v=1764946509&width=2880" alt="Silk pillowcase">
+            </div>
+            <h3>Sleep & Skin Beauty Tips:</h3>
+            <ul>
+              <li><strong>Aim for 7–9 hours nightly:</strong> Consistent sleep schedule improves skin health and overall wellbeing</li>
+              <li><strong>Use a nourishing night cream:</strong> Apply before bed to support overnight skin repair</li>
+              <li><strong>Invest in a silk pillowcase:</strong> Reduces friction and prevents sleep creases that can lead to permanent wrinkles</li>
+              <li><strong>Sleep on your back:</strong> Prevents facial creasing and maintains skin firmness</li>
+            </ul>
+            <p><strong>The result:</strong> You'll wake up with refreshed, plump, glowing skin — beauty sleep is absolutely real!</p>
+          </section>
+
+          <!-- Section 8: Stay Consistent -->
+          <section class="blog-section">
+            <h2><span class="section-number">8</span> Stay Consistent 🔄</h2>
+            <p>Here's the truth: no single product works overnight. Radiant, healthy skin is built on consistency and patience over weeks and months.</p>
+            <div class="consistency-checklist">
+              <h3>Your Consistency Checklist:</h3>
+              <ul>
+                <li><strong>Consistency:</strong> Use your routine religiously, day after day</li>
+                <li><strong>Patience:</strong> Allow 4–6 weeks to see visible improvements</li>
+                <li><strong>Right products:</strong> Invest in quality, dermatologist-approved formulations</li>
+                <li><strong>Daily protection:</strong> Sunscreen and moisturizer should be non-negotiable</li>
+                <li><strong>Lifestyle factors:</strong> Sleep, water, diet, and stress management matter equally</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Final Thoughts -->
+          <section class="blog-section final-thoughts">
+            <h2>Final Thoughts 🌸</h2>
+            <p>Radiant skin isn't about perfection or expensive procedures — it's about building healthy habits and practicing consistent self-care. Your skin is your largest organ and deserves attention and love.</p>
+            <p>Keep your routine simple, listen to what your skin needs, and remember: <strong>glowing skin is always in style.</strong></p>
+            <div class="blog-cta-box">
+              <p>Need personalized product recommendations? Browse our curated <a href="../shop.html#skincare">skincare collection</a> or <a href="../contact.html">contact our beauty advisors</a> for expert guidance.</p>
+            </div>
+          </section>
+        </article>
+
+        <div style="margin-top: 3rem; text-align: center;">
+          <a href="../blog.html" class="btn-secondary">← Back to Blog</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><div class="footer-bottom"><p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p></div></div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
+

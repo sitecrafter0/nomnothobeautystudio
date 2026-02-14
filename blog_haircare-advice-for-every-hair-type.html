@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Haircare Advice for Every Hair Type — Nomnotho Beauty Studio</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Blog-specific styles */
+    .blog-header {
+      margin-bottom: 3rem;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 2rem;
+    }
+    
+    .blog-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+      font-weight: 600;
+    }
+    
+    .blog-intro {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      margin-top: 1.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+    
+    .blog-section {
+      margin-bottom: 3.5rem;
+      padding: 0;
+    }
+    
+    .blog-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--black);
+    }
+    
+    .hair-type-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hair-type-emoji {
+      font-size: 2rem;
+    }
+    
+    .hair-type-name {
+      flex: 1;
+    }
+    
+    .hair-type-name h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: var(--black);
+    }
+    
+    .hair-type-label {
+      font-size: 0.9rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
+    
+    .blog-section h3 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--black);
+    }
+    
+    .blog-section p {
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+    }
+    
+    .characteristics-box {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(245, 245, 245, 1) 100%);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+    }
+    
+    .characteristics-box h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--black);
+      font-size: 1rem;
+    }
+    
+    .characteristics-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .characteristics-box li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.6rem;
+      position: relative;
+      color: var(--dark-gray);
+    }
+    
+    .characteristics-box li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: bold;
+    }
+    
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .tip-card {
+      background: var(--ivory);
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .tip-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+    }
+    
+    .pro-tip-box {
+      background: rgba(212, 175, 55, 0.1);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+    }
+    
+    .pro-tip-box strong {
+      color: var(--black);
+    }
+    
+    .blog-image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .blog-image-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .blog-image-grid img:hover {
+      transform: scale(1.05);
+    }
+    
+    .universal-tips {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .universal-tip {
+      background: linear-gradient(135deg, rgba(245, 245, 245, 1) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .universal-tip h4 {
+      margin: 0 0 0.75rem 0;
+      color: var(--black);
+      font-size: 1.1rem;
+    }
+    
+    .universal-tip p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+    }
+    
+    .personalized-routine {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.02) 0%, rgba(212, 175, 55, 0.08) 100%);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+    }
+    
+    .personalized-routine h2 {
+      margin-top: 0;
+    }
+    
+    .personalized-routine ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+    }
+    
+    .personalized-routine li {
+      margin-bottom: 0.8rem;
+      color: var(--dark-gray);
+    }
+    
+    .blog-cta-box {
+      background: var(--black);
+      color: var(--ivory);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .blog-cta-box a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: text-decoration 0.2s;
+    }
+    
+    .blog-cta-box a:hover {
+      text-decoration: underline;
+    }
+    
+    .blog-post {
+      padding: 3rem 0;
+      background: var(--ivory);
+    }
+    
+    @media (max-width: 768px) {
+      .blog-header h1 {
+        font-size: 2rem;
+      }
+      
+      .blog-image-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .blog-image-grid img {
+        height: auto;
+      }
+      
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .universal-tips {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><h1>Nomnotho Beauty</h1><p class="tagline">Studio</p></div>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../shop.html">Shop</a></li>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../customer-care.html">Customer Care</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li class="account-icons"><a href="../account.html"><i class="fas fa-user"></i></a><a href="../cart.html"><i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="blog-post">
+      <div class="container">
+        <header class="blog-header">
+          <h1>The Ultimate Haircare Advice for Every Hair Type 💁‍♀️</h1>
+          <p class="muted">Published Feb 14, 2026 · By Nomnotho Beauty Studio · 12 min read</p>
+          <p class="blog-intro">Healthy, beautiful hair isn't about following trends — it's about understanding <strong>your hair type</strong> and giving it exactly what it needs. Whether your strands are straight, wavy, curly, or coily, this complete guide will help you build a routine that works.</p>
+        </header>
+
+        <article class="blog-content">
+          <!-- Section 1: Straight Hair -->
+          <section class="blog-section">
+            <div class="hair-type-header">
+              <span class="hair-type-emoji">🌟</span>
+              <div class="hair-type-name">
+                <h3>Straight Hair</h3>
+                <p class="hair-type-label">Type 1</p>
+              </div>
+            </div>
+            
+            <div class="blog-image-grid">
+              <img src="https://photos.peopleimages.com/picture/202405/2408638-rear-view-of-a-young-woman-with-beautiful-long-smooth-hair-close-up-of-a-woman-with-luxurious-straight-and-shiny-brown-hair-healthy-hair-against-studio-background-fit_400_400.jpg" alt="Straight hair texture">
+              <img src="https://i.pinimg.com/236x/8d/6f/d3/8d6fd3b289ae72328cb1df6af164410f.jpg" alt="Smooth straight hair">
+              <img src="https://number4hair.com/cdn/shop/articles/iStock-1124238208_846905a7-3b3d-47eb-a001-c74db799b7cd.webp?v=1753180961" alt="Shiny straight hair">
+            </div>
+            
+            <div class="characteristics-box">
+              <h4>Characteristics:</h4>
+              <ul>
+                <li>Naturally smooth and shiny</li>
+                <li>Can get oily quickly</li>
+                <li>Prone to looking flat</li>
+              </ul>
+            </div>
+            
+            <h3>Haircare Tips:</h3>
+            <div class="tips-grid">
+              <div class="tip-card">
+                <p><strong>Lightweight Shampoos</strong><br>Prevent oil buildup</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Minimal Conditioning</strong><br>Apply only to ends</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Regular Washing</strong><br>Every 1–2 days if oily</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Volumizing Products</strong><br>Add lift and texture</p>
+              </div>
+            </div>
+            
+            <div class="pro-tip-box">
+              <strong>💡 Pro Tip:</strong> Dry shampoo can be your best friend between washes. It absorbs excess oil and adds texture without requiring a full wash.
+            </div>
+          </section>
+
+          <!-- Section 2: Wavy Hair -->
+          <section class="blog-section">
+            <div class="hair-type-header">
+              <span class="hair-type-emoji">🌊</span>
+              <div class="hair-type-name">
+                <h3>Wavy Hair</h3>
+                <p class="hair-type-label">Type 2</p>
+              </div>
+            </div>
+            
+            <div class="blog-image-grid">
+              <img src="https://cdn.shopify.com/s/files/1/0144/3636/8419/articles/Boho_Beach_Jelly_Ava_2_1.jpg?v=1729677068" alt="Wavy hair style">
+              <img src="https://i.pinimg.com/736x/73/2b/30/732b30bf5f8f4f468da3fe74f8cec84f.jpg" alt="Beachy waves">
+              <img src="https://rizoscurls.com/cdn/shop/articles/Rizos_Curls_Air_Dry_vs_Diffuse.png?v=1657739429" alt="Wave definition techniques">
+            </div>
+            
+            <div class="characteristics-box">
+              <h4>Characteristics:</h4>
+              <ul>
+                <li>Loose "S" pattern</li>
+                <li>Can frizz easily</li>
+                <li>Not quite straight, not quite curly</li>
+              </ul>
+            </div>
+            
+            <h3>Haircare Tips:</h3>
+            <div class="tips-grid">
+              <div class="tip-card">
+                <p><strong>Sulfate-Free Shampoo</strong><br>Maintain natural moisture</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Lightweight Mousse</strong><br>Define and enhance waves</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Air Dry or Diffuse</strong><br>Gentle drying methods</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Microfiber Towel</strong><br>Reduce frizz and breakage</p>
+              </div>
+            </div>
+            
+            <div class="pro-tip-box">
+              <strong>💡 Pro Tip:</strong> Don't brush your waves when they're dry — it disrupts the pattern and causes frizz. Instead, use a wide-tooth comb on damp hair to detangle gently.
+            </div>
+          </section>
+
+          <!-- Section 3: Curly Hair -->
+          <section class="blog-section">
+            <div class="hair-type-header">
+              <span class="hair-type-emoji">🌀</span>
+              <div class="hair-type-name">
+                <h3>Curly Hair</h3>
+                <p class="hair-type-label">Type 3</p>
+              </div>
+            </div>
+            
+            <div class="blog-image-grid">
+              <img src="https://cdn.shopify.com/s/files/1/0747/3963/files/4b-hair-texture.jpg?v=1760797325" alt="Curly hair texture">
+              <img src="https://media.beautycon.com/vzfhnuaggt/uploads/2022/09/curlswithkeish-350-2.jpg" alt="Defined curls">
+              <img src="https://www.umbertogiannini.com/cdn/shop/products/Untitleddesign-218_e1f99308-c062-4d06-ae69-57871aa724a9.png?v=1742514485" alt="Curly hair care products">
+            </div>
+            
+            <div class="characteristics-box">
+              <h4>Characteristics:</h4>
+              <ul>
+                <li>Defined ringlets or spirals</li>
+                <li>Naturally dry</li>
+                <li>Needs moisture and definition</li>
+              </ul>
+            </div>
+            
+            <h3>Haircare Tips:</h3>
+            <div class="tips-grid">
+              <div class="tip-card">
+                <p><strong>Deep Condition Weekly</strong><br>Lock in moisture</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Leave-In Conditioner</strong><br>Extra hydration</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Avoid Sulfates</strong><br>Preserve natural curl</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Plop Method</strong><br>Gentle drying</p>
+              </div>
+            </div>
+            
+            <div class="pro-tip-box">
+              <strong>💡 Pro Tip:</strong> Sleep on a silk or satin pillowcase to reduce frizz and maintain your curl definition overnight. Cotton pillowcases cause friction and disturb your curl pattern.
+            </div>
+          </section>
+
+          <!-- Section 4: Coily/Kinky Hair -->
+          <section class="blog-section">
+            <div class="hair-type-header">
+              <span class="hair-type-emoji">👑</span>
+              <div class="hair-type-name">
+                <h3>Coily/Kinky Hair</h3>
+                <p class="hair-type-label">Type 4</p>
+              </div>
+            </div>
+            
+            <div class="blog-image-grid">
+              <img src="https://it.olaplex.com/cdn/shop/articles/OLAPLEX-_Batch_2b_-Understanding_Your_Natural_Hair_Texture-Image.jpg?v=1727709305" alt="Coily hair texture">
+              <img src="https://i.shgcdn.com/244695c3-1b1f-4419-97e0-3b7082301e6d/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="Kinky texture">
+              <img src="https://byaaronwallace.com/cdn/shop/articles/black-men-curly-hair_600x600_crop_center.jpg?v=1648045716" alt="Healthy coily hair">
+            </div>
+            
+            <div class="characteristics-box">
+              <h4>Characteristics:</h4>
+              <ul>
+                <li>Tight coils or zig-zag pattern</li>
+                <li>Very fragile and delicate</li>
+                <li>Shrinkage is normal and expected</li>
+              </ul>
+            </div>
+            
+            <h3>Haircare Tips:</h3>
+            <div class="tips-grid">
+              <div class="tip-card">
+                <p><strong>Rich Moisture</strong><br>Creams and oils</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Protective Styles</strong><br>Reduce breakage</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Minimal Heat</strong><br>Avoid excessive styling</p>
+              </div>
+              <div class="tip-card">
+                <p><strong>Gentle Detangling</strong><br>Use conditioner</p>
+              </div>
+            </div>
+            
+            <div class="pro-tip-box">
+              <strong>💡 Pro Tip:</strong> Try the LOC method (Liquid, Oil, Cream) to lock in moisture. Apply leave-in conditioner (Liquid), followed by oil, then a rich cream. This layering technique creates a moisture barrier that keeps your curls hydrated all day.
+            </div>
+          </section>
+
+          <!-- Universal Tips Section -->
+          <section class="blog-section">
+            <h2>🧴 Universal Haircare Tips for All Hair Types</h2>
+            <p>No matter your texture, these fundamental principles apply to keeping your hair healthy and beautiful:</p>
+            
+            <div class="universal-tips">
+              <div class="universal-tip">
+                <h4>✨ Don't Overwash</h4>
+                <p>Too much shampoo strips natural oils from your scalp. Wash 2–3 times per week for most hair types.</p>
+              </div>
+              <div class="universal-tip">
+                <h4>✨ Trim Regularly</h4>
+                <p>Get a trim every 6–8 weeks to keep split ends at bay and maintain a healthy-looking style.</p>
+              </div>
+              <div class="universal-tip">
+                <h4>✨ Protect from Heat</h4>
+                <p>Always use a heat protectant spray before blow-drying or using hot tools.</p>
+              </div>
+              <div class="universal-tip">
+                <h4>✨ Eat for Healthy Hair</h4>
+                <p>Include protein, iron, omega-3s, and B vitamins in your diet for strong, shiny strands.</p>
+              </div>
+              <div class="universal-tip">
+                <h4>✨ Stay Hydrated</h4>
+                <p>Drink plenty of water. Healthy hair starts from within your body.</p>
+              </div>
+              <div class="universal-tip">
+                <h4>✨ Sleep Smart</h4>
+                <p>Use a silk or satin bonnet or pillowcase to reduce friction while you sleep.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Personalized Routine Section -->
+          <section class="blog-section personalized-routine">
+            <h2>💖 Build Your Personalized Haircare Routine</h2>
+            <p>The secret to perfect haircare isn't copying someone else's routine — it's learning what <strong>your hair responds to best</strong>. The key is consistency and self-observation.</p>
+            
+            <h3>Start Simple with These Steps:</h3>
+            <ol>
+              <li><strong>Identify your hair type</strong> (or combination if you have multiple textures)</li>
+              <li><strong>Choose products designed for your texture</strong> — don't use one-size-fits-all formulas</li>
+              <li><strong>Focus on moisture and scalp health</strong> — these are the foundations</li>
+              <li><strong>Be consistent</strong> — give products at least 2–3 weeks before deciding if they work</li>
+              <li><strong>Observe and adjust</strong> — pay attention to how your hair responds to different routines</li>
+            </ol>
+            
+            <p style="margin-top: 1.5rem; font-style: italic; color: var(--dark-gray);">Remember: Your hair is unique — treat it that way. What works for your friend might not work for you, and that's perfectly okay. Invest time in understanding your hair's needs, and you'll see transformation.</p>
+            
+            <div class="blog-cta-box">
+              <p>Ready to upgrade your haircare routine? Browse our <a href="../shop.html#haircare">premium haircare collection</a> designed for every hair type, or <a href="../contact.html">chat with our beauty experts</a> for personalized recommendations.</p>
+            </div>
+          </section>
+        </article>
+
+        <div style="margin-top: 3rem; text-align: center;">
+          <a href="../blog.html" class="btn-secondary">← Back to Blog</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><div class="footer-bottom"><p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p></div></div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
+

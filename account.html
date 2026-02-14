@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Account — Nomnotho Beauty Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Premium Account Page Styles */
+    .account-page {
+        padding: 80px 20px;
+        background: #F8F4EF;
+        min-height: 100vh;
+    }
+
+    .auth-container {
+        display: none;
+    }
+
+    .auth-container.active {
+        display: block;
+    }
+
+    .account-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .account-panel {
+        background: #ffffff;
+        border: 2px solid #e0e0e0;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+    }
+
+    .account-panel:hover {
+        border-color: #D4AF37;
+        box-shadow: 0 8px 28px rgba(212, 175, 55, 0.12);
+    }
+
+    .account-panel h2 {
+        font-size: 28px;
+        color: #111111;
+        margin: 0 0 12px;
+        font-weight: 700;
+    }
+
+    .account-panel .muted {
+        color: #666;
+        margin-bottom: 28px;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .account-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111111;
+        display: block;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 14px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background: #ffffff;
+        font-size: 15px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #D4AF37;
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .password-toggle {
+        position: relative;
+    }
+
+    .password-toggle .toggle-btn {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #D4AF37;
+        font-size: 18px;
+        padding: 4px 8px;
+    }
+
+    .password-toggle input {
+        padding-right: 40px;
+    }
+
+    .form-check {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 8px 0;
+    }
+
+    .form-check input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+
+    .form-check label {
+        margin: 0;
+        cursor: pointer;
+        font-weight: 500;
+        color: #666;
+    }
+
+    .form-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 12px 0;
+    }
+
+    .form-actions a {
+        color: #D4AF37;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .form-actions a:hover {
+        color: #111111;
+    }
+
+    .form-switch {
+        text-align: center;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .form-switch a {
+        color: #D4AF37;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .form-switch a:hover {
+        color: #111111;
+    }
+
+    .message {
+        padding: 14px 16px;
+        border-radius: 8px;
+        margin-top: 12px;
+        font-size: 14px;
+        display: none;
+    }
+
+    .message.success {
+        display: block;
+        background: rgba(76, 175, 80, 0.1);
+        color: #2e7d32;
+        border-left: 4px solid #4caf50;
+    }
+
+    .message.error {
+        display: block;
+        background: rgba(244, 67, 54, 0.1);
+        color: #c62828;
+        border-left: 4px solid #f44336;
+    }
+
+    /* Dashboard Styles */
+    .dashboard-container {
+        display: none;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .dashboard-container.active {
+        display: block;
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
+        color: #F8F4EF;
+        padding: 40px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dashboard-header h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 8px;
+    }
+
+    .dashboard-header p {
+        color: #D4AF37;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .logout-btn {
+        background: #D4AF37;
+        color: #111111;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .logout-btn:hover {
+        background: #F8F4EF;
+        transform: scale(1.02);
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-bottom: 40px;
+    }
+
+    .dashboard-card {
+        background: #ffffff;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 32px;
+        transition: all 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+        border-color: #D4AF37;
+        box-shadow: 0 8px 28px rgba(212, 175, 55, 0.12);
+    }
+
+    .dashboard-card h3 {
+        font-size: 20px;
+        color: #111111;
+        margin: 0 0 20px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .dashboard-card h3 i {
+        color: #D4AF37;
+        font-size: 24px;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .info-label {
+        color: #666;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .info-value {
+        color: #111111;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .address-item {
+        background: #F8F4EF;
+        padding: 16px;
+        border-radius: 8px;
+        border-left: 4px solid #D4AF37;
+        margin-bottom: 12px;
+    }
+
+    .address-item p {
+        margin: 6px 0;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .order-item {
+        background: #F8F4EF;
+        padding: 16px;
+        border-radius: 8px;
+        border-left: 4px solid #D4AF37;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .order-info p {
+        margin: 4px 0;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .order-status {
+        background: #D4AF37;
+        color: #111111;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .edit-btn {
+        background: #111111;
+        color: #D4AF37;
+        border: 2px solid #111111;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .edit-btn:hover {
+        background: transparent;
+        color: #111111;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+    }
+
+    .empty-state i {
+        font-size: 48px;
+        color: #D4AF37;
+        margin-bottom: 16px;
+        opacity: 0.5;
+    }
+
+    .empty-state p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .account-footnote {
+        margin-top: 40px;
+        color: #666;
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .account-footnote a {
+        color: #D4AF37;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .account-footnote a:hover {
+        color: #111111;
+    }
+
+    /* Page Title */
+    .account-title {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    .account-title h1 {
+        font-size: 44px;
+        color: #111111;
+        margin: 0 0 12px;
+        font-weight: 700;
+    }
+
+    .account-title p {
+        color: #D4AF37;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    @media (max-width: 900px) {
+        .account-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .account-page {
+            padding: 40px 20px;
+        }
+
+        .dashboard-header {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .dashboard-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><h1>Nomnotho Beauty</h1><p class="tagline">Studio</p></div>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="customer-care.html">Customer Care</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="account-icons"><a href="account.html"><i class="fas fa-user"></i></a><a href="cart.html"><i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="account-page">
+      <div class="container">
+        <!-- Page Title -->
+        <div class="account-title">
+          <h1>My Account</h1>
+          <p>Manage your profile, orders, and preferences</p>
+        </div>
+
+        <!-- Authentication Container -->
+        <div id="authContainer" class="auth-container active">
+          <div class="account-grid">
+            <!-- Sign In Panel -->
+            <div class="account-panel">
+              <h2>Welcome Back</h2>
+              <p class="muted">Sign in to view orders, track shipments and manage your details.</p>
+
+              <form id="loginForm" class="account-form">
+                <div class="form-group">
+                  <label for="loginEmail">Email Address</label>
+                  <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="loginPassword">Password</label>
+                  <div class="password-toggle">
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <button type="button" class="toggle-btn" onclick="togglePassword('loginPassword')">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" id="rememberMe">
+                  <label for="rememberMe">Remember me on this device</label>
+                </div>
+
+                <button type="submit" class="btn-primary">Sign In</button>
+
+                <div id="loginMessage" class="message"></div>
+
+                <div class="form-switch">
+                  <p style="color: #666; margin-bottom: 12px;">New customer?</p>
+                  <a href="#register" onclick="switchToRegister(event)">Create an Account</a>
+                </div>
+              </form>
+            </div>
+
+            <!-- Sign Up Panel -->
+            <div class="account-panel">
+              <h2>Create Account</h2>
+              <p class="muted">Create an account to speed up checkout, save addresses and track orders.</p>
+
+              <form id="registerForm" class="account-form">
+                <div class="form-group">
+                  <label for="regName">Full Name</label>
+                  <input type="text" id="regName" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="regEmail">Email Address</label>
+                  <input type="email" id="regEmail" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="regPhone">Phone Number</label>
+                  <input type="tel" id="regPhone" placeholder="+27 (0)12 345 6789">
+                </div>
+
+                <div class="form-group">
+                  <label for="regPassword">Password</label>
+                  <div class="password-toggle">
+                    <input type="password" id="regPassword" placeholder="Min 8 characters" required>
+                    <button type="button" class="toggle-btn" onclick="togglePassword('regPassword')">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="regPassword2">Confirm Password</label>
+                  <div class="password-toggle">
+                    <input type="password" id="regPassword2" placeholder="Re-enter password" required>
+                    <button type="button" class="toggle-btn" onclick="togglePassword('regPassword2')">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" id="agreeTerms" required>
+                  <label for="agreeTerms">I agree to the Privacy Policy and Terms & Conditions</label>
+                </div>
+
+                <button type="submit" class="btn-primary">Create Account</button>
+
+                <div id="registerMessage" class="message"></div>
+              </form>
+            </div>
+          </div>
+
+          <div class="account-footnote">
+            <p>By creating an account you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a>.</p>
+          </div>
+        </div>
+
+        <!-- Dashboard Container (shown after login) -->
+        <div id="dashboardContainer" class="dashboard-container">
+          <!-- Dashboard Header -->
+          <div class="dashboard-header">
+            <div>
+              <h2 id="dashboardName">Welcome</h2>
+              <p>Account ID: <span id="dashboardEmail">loading...</span></p>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+              <i class="fas fa-sign-out-alt"></i> Sign Out
+            </button>
+          </div>
+
+          <!-- Dashboard Grid -->
+          <div class="dashboard-grid">
+            <!-- Account Information -->
+            <div class="dashboard-card">
+              <h3><i class="fas fa-user"></i> Account Information</h3>
+              <div class="card-content">
+                <div class="info-row">
+                  <span class="info-label">Name</span>
+                  <span class="info-value" id="accName">—</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Email</span>
+                  <span class="info-value" id="accEmail">—</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Phone</span>
+                  <span class="info-value" id="accPhone">—</span>
+                </div>
+                <button class="edit-btn" onclick="editProfile()">
+                  <i class="fas fa-edit"></i> Edit Profile
+                </button>
+              </div>
+            </div>
+
+            <!-- Saved Addresses -->
+            <div class="dashboard-card">
+              <h3><i class="fas fa-map-marker-alt"></i> Saved Addresses</h3>
+              <div class="card-content" id="addressesList">
+                <div class="empty-state">
+                  <p>No saved addresses yet.</p>
+                  <button class="edit-btn" onclick="addAddress()">
+                    <i class="fas fa-plus"></i> Add Address
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="dashboard-card">
+              <h3><i class="fas fa-shopping-bag"></i> Recent Orders</h3>
+              <div class="card-content" id="ordersList">
+                <div class="empty-state">
+                  <i class="fas fa-inbox"></i>
+                  <p>No orders yet.</p>
+                  <a href="shop.html" class="edit-btn">Start Shopping</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="dashboard-card">
+              <h3><i class="fas fa-heart"></i> Wishlist</h3>
+              <div class="card-content" id="wishlistList">
+                <div class="empty-state">
+                  <p>Your wishlist is empty.</p>
+                  <a href="shop.html" class="edit-btn">Browse Products</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Customer Support</h4>
+          <ul>
+            <li><a href="customer-care.html">Help Centre</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">POPIA Compliance</a></li>
+            <li><a href="#">Returns & Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/27123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Payment Methods</h4>
+          <div class="payment-icons"><i class="fas fa-credit-card"></i><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Client-side account management system
+    // Note: For production, implement server-side authentication with proper security measures
+
+    const USERS_KEY = 'nb_users_v1';
+    const SESSION_KEY = 'nb_user_session';
+    const ADDRESSES_KEY = 'nb_user_addresses';
+    const ORDERS_KEY = 'nb_user_orders';
+
+    // Utility Functions
+    function getUsers() {
+      try {
+        return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveUsers(users) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+
+    function getCurrentUser() {
+      try {
+        return JSON.parse(localStorage.getItem(SESSION_KEY));
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function setCurrentUser(user) {
+      localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+    }
+
+    function getUserAddresses(email) {
+      try {
+        const addresses = JSON.parse(localStorage.getItem(ADDRESSES_KEY)) || {};
+        return addresses[email] || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveUserAddresses(email, addresses) {
+      try {
+        const allAddresses = JSON.parse(localStorage.getItem(ADDRESSES_KEY)) || {};
+        allAddresses[email] = addresses;
+        localStorage.setItem(ADDRESSES_KEY, JSON.stringify(allAddresses));
+      } catch (e) {
+        console.error('Error saving addresses:', e);
+      }
+    }
+
+    function getUserOrders(email) {
+      try {
+        const orders = JSON.parse(localStorage.getItem(ORDERS_KEY)) || {};
+        return orders[email] || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function addOrder(email, order) {
+      try {
+        const allOrders = JSON.parse(localStorage.getItem(ORDERS_KEY)) || {};
+        if (!allOrders[email]) {
+          allOrders[email] = [];
+        }
+        allOrders[email].push({
+          id: 'ORD-' + Date.now(),
+          date: new Date().toLocaleDateString(),
+          status: 'Pending',
+          total: order.total || 0,
+          items: order.items || []
+        });
+        localStorage.setItem(ORDERS_KEY, JSON.stringify(allOrders));
+      } catch (e) {
+        console.error('Error saving order:', e);
+      }
+    }
+
+    // Toggle Password Visibility
+    function togglePassword(fieldId) {
+      const field = document.getElementById(fieldId);
+      const isPassword = field.type === 'password';
+      field.type = isPassword ? 'text' : 'password';
+    }
+
+    // Switch Between Forms
+    function switchToRegister(e) {
+      e.preventDefault();
+      document.getElementById('registerForm').reset();
+      document.getElementById('regName').focus();
+    }
+
+    // Show Message
+    function showMessage(elementId, text, type) {
+      const el = document.getElementById(elementId);
+      el.textContent = text;
+      el.className = 'message ' + type;
+      if (type === 'success') {
+        setTimeout(() => {
+          el.className = 'message';
+        }, 5000);
+      }
+    }
+
+    // Registration Handler
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+      registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('regName').value.trim();
+        const email = document.getElementById('regEmail').value.trim().toLowerCase();
+        const phone = document.getElementById('regPhone').value.trim();
+        const password = document.getElementById('regPassword').value;
+        const password2 = document.getElementById('regPassword2').value;
+        const agreeTerms = document.getElementById('agreeTerms').checked;
+
+        // Validation
+        if (!name || !email || !password) {
+          showMessage('registerMessage', '❌ Please fill in all required fields.', 'error');
+          return;
+        }
+
+        if (password.length < 8) {
+          showMessage('registerMessage', '❌ Password must be at least 8 characters.', 'error');
+          return;
+        }
+
+        if (password !== password2) {
+          showMessage('registerMessage', '❌ Passwords do not match.', 'error');
+          return;
+        }
+
+        if (!agreeTerms) {
+          showMessage('registerMessage', '❌ Please agree to the terms and conditions.', 'error');
+          return;
+        }
+
+        const users = getUsers();
+        if (users.find(u => u.email === email)) {
+          showMessage('registerMessage', '❌ An account with this email already exists.', 'error');
+          return;
+        }
+
+        // Create account
+        users.push({
+          name,
+          email,
+          phone,
+          password, // WARNING: Never store plain passwords in production!
+          createdAt: new Date().toISOString()
+        });
+
+        saveUsers(users);
+        showMessage('registerMessage', '✅ Account created successfully! You can now sign in.', 'success');
+        registerForm.reset();
+
+        setTimeout(() => {
+          document.getElementById('loginEmail').value = email;
+          document.getElementById('loginEmail').focus();
+        }, 1500);
+      });
+    }
+
+    // Login Handler
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+        const password = document.getElementById('loginPassword').value;
+        const rememberMe = document.getElementById('rememberMe').checked;
+
+        // Find user
+        const users = getUsers();
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+          const userData = {
+            email: user.email,
+            name: user.name,
+            phone: user.phone,
+            loginTime: new Date().toISOString()
+          };
+
+          setCurrentUser(userData);
+          showMessage('loginMessage', `✅ Welcome back, ${user.name}!`, 'success');
+
+          setTimeout(() => {
+            showDashboard();
+          }, 1000);
+        } else {
+          showMessage('loginMessage', '❌ Invalid email or password.', 'error');
+        }
+      });
+    }
+
+    // Show Dashboard
+    function showDashboard() {
+      const user = getCurrentUser();
+      if (!user) {
+        window.location.href = 'account.html';
+        return;
+      }
+
+      const authContainer = document.getElementById('authContainer');
+      const dashboardContainer = document.getElementById('dashboardContainer');
+
+      authContainer.classList.remove('active');
+      dashboardContainer.classList.add('active');
+
+      // Populate dashboard
+      document.getElementById('dashboardName').textContent = `Welcome, ${user.name}`;
+      document.getElementById('dashboardEmail').textContent = user.email;
+      document.getElementById('accName').textContent = user.name;
+      document.getElementById('accEmail').textContent = user.email;
+      document.getElementById('accPhone').textContent = user.phone || 'Not provided';
+
+      // Load addresses
+      loadAddresses(user.email);
+
+      // Load orders
+      loadOrders(user.email);
+    }
+
+    // Load Addresses
+    function loadAddresses(email) {
+      const addresses = getUserAddresses(email);
+      const container = document.getElementById('addressesList');
+
+      if (addresses.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>No saved addresses yet.</p>
+            <button class="edit-btn" onclick="addAddress()">
+              <i class="fas fa-plus"></i> Add Address
+            </button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = addresses.map((addr, idx) => `
+          <div class="address-item">
+            <p><strong>${addr.name}</strong></p>
+            <p>${addr.street}</p>
+            <p>${addr.city}, ${addr.province} ${addr.postal}</p>
+            <p>${addr.phone}</p>
+            <div style="margin-top: 12px; display: flex; gap: 8px;">
+              <button class="edit-btn" style="flex: 1;" onclick="editAddress(${idx})">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="edit-btn" style="flex: 1; background: #f44336; color: white;" onclick="deleteAddress(${idx})">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Load Orders
+    function loadOrders(email) {
+      const orders = getUserOrders(email);
+      const container = document.getElementById('ordersList');
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <p>No orders yet.</p>
+            <a href="shop.html" class="edit-btn">Start Shopping</a>
+          </div>
+        `;
+      } else {
+        container.innerHTML = orders.map(order => `
+          <div class="order-item">
+            <div class="order-info">
+              <p><strong>${order.id}</strong></p>
+              <p>${order.date}</p>
+            </div>
+            <div>
+              <p style="text-align: right;"><strong>R ${order.total.toFixed(2)}</strong></p>
+              <span class="order-status">${order.status}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Add Address
+    function addAddress() {
+      const user = getCurrentUser();
+      if (!user) return;
+
+      const name = prompt('Recipient Name:');
+      if (!name) return;
+
+      const street = prompt('Street Address:');
+      if (!street) return;
+
+      const city = prompt('City:');
+      if (!city) return;
+
+      const province = prompt('Province:');
+      if (!province) return;
+
+      const postal = prompt('Postal Code:');
+      if (!postal) return;
+
+      const phone = prompt('Phone Number:');
+      if (!phone) return;
+
+      const addresses = getUserAddresses(user.email);
+      addresses.push({ name, street, city, province, postal, phone });
+      saveUserAddresses(user.email, addresses);
+
+      loadAddresses(user.email);
+      alert('✅ Address added successfully!');
+    }
+
+    // Edit Address
+    function editAddress(idx) {
+      alert('Edit functionality coming soon! For now, please delete and re-add the address.');
+    }
+
+    // Delete Address
+    function deleteAddress(idx) {
+      const user = getCurrentUser();
+      if (!user) return;
+
+      if (confirm('Are you sure you want to delete this address?')) {
+        const addresses = getUserAddresses(user.email);
+        addresses.splice(idx, 1);
+        saveUserAddresses(user.email, addresses);
+        loadAddresses(user.email);
+        alert('✅ Address deleted.');
+      }
+    }
+
+    // Edit Profile
+    function editProfile() {
+      const user = getCurrentUser();
+      if (!user) return;
+
+      const newName = prompt('Update your name:', user.name);
+      if (newName && newName !== user.name) {
+        user.name = newName;
+        setCurrentUser(user);
+
+        // Update in users list
+        const users = getUsers();
+        const idx = users.findIndex(u => u.email === user.email);
+        if (idx !== -1) {
+          users[idx].name = newName;
+          saveUsers(users);
+        }
+
+        showDashboard();
+        alert('✅ Profile updated!');
+      }
+    }
+
+    // Logout
+    function logout() {
+      if (confirm('Are you sure you want to sign out?')) {
+        localStorage.removeItem(SESSION_KEY);
+        window.location.href = 'account.html';
+      }
+    }
+
+    // Initialize - Check if user is already logged in
+    window.addEventListener('load', () => {
+      const user = getCurrentUser();
+      if (user) {
+        showDashboard();
+      }
+    });
+  </script>
+</body>
+</html>

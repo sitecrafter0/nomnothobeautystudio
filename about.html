@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About Us — Nomnotho Beauty Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* About Page Specific Styles */
+    .about-hero {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.8) 0%, rgba(17, 17, 17, 0.6) 100%), 
+                  url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200') center/cover;
+      color: var(--ivory);
+      padding: 6rem 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .about-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .about-hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .about-section {
+      margin-bottom: 4rem;
+      padding: 2rem 0;
+    }
+    
+    .about-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--black);
+      text-align: center;
+      position: relative;
+      padding-bottom: 1.5rem;
+    }
+    
+    .about-section h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--gold);
+    }
+    
+    .about-section p {
+      color: var(--dark-gray);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 2rem 0;
+      align-items: center;
+    }
+    
+    .story-content h3 {
+      font-size: 1.6rem;
+      color: var(--black);
+      margin-bottom: 1rem;
+    }
+    
+    .story-content p {
+      margin-bottom: 1rem;
+    }
+    
+    .story-image {
+      height: 400px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(245, 245, 245, 1) 100%);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    
+    .story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .value-card {
+      background: linear-gradient(135deg, rgba(245, 245, 245, 1) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+    }
+    
+    .value-card i {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    
+    .value-card h3 {
+      font-size: 1.3rem;
+      color: var(--black);
+      margin-bottom: 0.8rem;
+    }
+    
+    .value-card p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+    
+    .why-choose-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .why-choose-item {
+      background: var(--ivory);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem;
+      border-radius: 4px;
+    }
+    
+    .why-choose-item h4 {
+      color: var(--black);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .why-choose-item p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+    
+    .mission-statement {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.02) 0%, rgba(212, 175, 55, 0.08) 100%);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .mission-statement h3 {
+      font-size: 1.8rem;
+      color: var(--black);
+      margin-bottom: 1rem;
+    }
+    
+    .mission-statement p {
+      font-size: 1.1rem;
+      color: var(--dark-gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .commitment-section {
+      background: var(--ivory);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    
+    .commitment-section h3 {
+      color: var(--black);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .commitment-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .commitment-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .commitment-item i {
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+    
+    .commitment-item p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+    
+    .cta-section {
+      background: var(--black);
+      color: var(--ivory);
+      padding: 3rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .cta-section h2 {
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+    
+    .cta-section p {
+      color: rgba(248, 244, 239, 0.9);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .cta-section .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+    }
+    
+    .cta-section .btn-primary:hover {
+      background: #e0c16f;
+    }
+    
+    .about {
+      padding: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .about-hero {
+        padding: 4rem 1rem;
+      }
+      
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .about-hero p {
+        font-size: 1rem;
+      }
+      
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .story-image {
+        height: 300px;
+      }
+      
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .mission-statement {
+        padding: 2rem;
+      }
+      
+      .commitment-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation (same as index) -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><h1>Nomnotho Beauty</h1><p class="tagline">Studio</p></div>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="customer-care.html">Customer Care</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="account-icons"><a href="account.html"><i class="fas fa-user"></i></a><a href="cart.html"><i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <h1>About Nomnotho Beauty Studio</h1>
+      <p>Redefining luxury beauty through cruelty-free, ethically-sourced products that celebrate your authentic beauty.</p>
+    </section>
+
+    <div class="container">
+      <!-- Our Story Section -->
+      <section class="about-section">
+        <h2>Our Story</h2>
+        <div class="story-grid">
+          <div class="story-content">
+            <h3>From Passion to Purpose</h3>
+            <p>Nomnotho Beauty Studio was born from a vision: to create a space where luxury beauty meets ethical responsibility. We recognized that too many beauty brands compromise on values to chase trends. We decided to do things differently.</p>
+            <p>Founded in 2020, Nomnotho Beauty Studio has grown from a small curated collection into a thriving destination for beauty enthusiasts who refuse to sacrifice quality, ethics, or results. Every product in our collection has been personally vetted to ensure it meets our rigorous standards for efficacy, ingredient quality, and ethical sourcing.</p>
+            <p>Today, we're proud to serve thousands of customers who share our belief: <strong>true beauty comes from feeling confident in the products you use and the values they represent.</strong></p>
+          </div>
+          <div class="story-image">
+            <img src="https://images.unsplash.com/photo-1609587348105-01c95430a26f?w=500" alt="Nomnotho Beauty products">
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission Statement -->
+      <section class="mission-statement">
+        <h3>Our Mission</h3>
+        <p>To empower individuals through premium, cruelty-free beauty products that enhance natural beauty while championing ethical sourcing, inclusivity, and transparency in every aspect of our business.</p>
+      </section>
+
+      <!-- Core Values Section -->
+      <section class="about-section">
+        <h2>Our Core Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <i class="fas fa-leaf"></i>
+            <h3>Cruelty-Free Commitment</h3>
+            <p>We never test on animals. All our products are certified cruelty-free and ethically sourced, because beauty should never come at the cost of animal welfare.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-users"></i>
+            <h3>Inclusivity & Diversity</h3>
+            <p>Beauty comes in all shades, textures, and types. Our collections are designed for every skin tone, hair type, and beauty need. Everyone deserves to feel represented.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Quality & Innovation</h3>
+            <p>We source premium ingredients and partner with innovative beauty brands. Our goal is to deliver results you can see and feel with every application.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-heart"></i>
+            <h3>Transparency & Trust</h3>
+            <p>You deserve to know exactly what's in your products and why. We provide detailed ingredient breakdowns and honest expert guidance on every item.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-globe"></i>
+            <h3>Sustainability</h3>
+            <p>We're committed to reducing our environmental impact through eco-conscious packaging, responsible sourcing, and partnerships with sustainable beauty brands.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-star"></i>
+            <h3>Excellence in Service</h3>
+            <p>From your first browse to after-purchase support, we're dedicated to delivering exceptional customer service and expert beauty guidance.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us Section -->
+      <section class="about-section">
+        <h2>Why Choose Nomnotho Beauty Studio</h2>
+        <div class="why-choose-grid">
+          <div class="why-choose-item">
+            <h4>✨ Premium Quality</h4>
+            <p>Curated collections featuring luxury brands and effective formulations. Every product is personally selected for quality and performance.</p>
+          </div>
+          <div class="why-choose-item">
+            <h4>🌍 Cruelty-Free Only</h4>
+            <p>100% cruelty-free guarantee. We work exclusively with brands that share our ethical values and animal welfare commitment.</p>
+          </div>
+          <div class="why-choose-item">
+            <h4>💡 Expert Guidance</h4>
+            <p>Our beauty advisors provide personalized recommendations based on your skin type, concerns, and preferences. We're here to help you succeed.</p>
+          </div>
+          <div class="why-choose-item">
+            <h4>🚚 Fast, Secure Shipping</h4>
+            <p>Enjoy secure packaging and fast delivery across South Africa. Track your order every step of the way with our reliable logistics partners.</p>
+          </div>
+          <div class="why-choose-item">
+            <h4>🔄 Hassle-Free Returns</h4>
+            <p>14-day returns policy with no questions asked. If a product doesn't work for you, we'll make it right quickly and easily.</p>
+          </div>
+          <div class="why-choose-item">
+            <h4>📚 Beauty Education</h4>
+            <p>Access our free blog featuring skincare tips, ingredient guides, and professional advice to help you make informed beauty choices.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Commitment Section -->
+      <section class="commitment-section">
+        <h3>Our Commitment to You</h3>
+        <div class="commitment-list">
+          <div class="commitment-item">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Authenticity:</strong> Every product is 100% authentic, sourced directly from authorized distributors.</p>
+          </div>
+          <div class="commitment-item">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Fair Pricing:</strong> Competitive prices without compromising on quality or ethical standards.</p>
+          </div>
+          <div class="commitment-item">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Community:</strong> Building a community of beauty enthusiasts who share values and support each other's beauty journeys.</p>
+          </div>
+          <div class="commitment-item">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Innovation:</strong> Constantly discovering new brands, products, and formulations to bring you the best beauty innovations.</p>
+          </div>
+          <div class="commitment-item">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Accessibility:</strong> Making luxury, ethical beauty accessible to everyone, regardless of budget.</p>
+          </div>
+          <div class="commitment-item">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Support:</strong> Available to answer questions, troubleshoot concerns, and celebrate your beauty wins with you.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <h2>Ready to Discover Your Beauty?</h2>
+        <p>Explore our curated collection of premium, cruelty-free beauty products designed for every skin type and concern.</p>
+        <a href="shop.html" class="btn-primary">Shop Our Collection</a>
+        <span style="margin: 0 1rem;">or</span>
+        <a href="contact.html" class="btn-secondary" style="background: rgba(248, 244, 239, 0.1); border: 2px solid var(--ivory); color: var(--ivory); margin-top: 0;">Chat with Our Experts</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Customer Support</h4>
+          <ul>
+            <li><a href="customer-care.html">Help Centre</a></li>
+            <li><a href="customer-care.html">FAQs</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">POPIA Compliance</a></li>
+            <li><a href="#">Returns & Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/27123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Payment Methods</h4>
+          <div class="payment-icons"><i class="fas fa-credit-card"></i><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p></div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomnotho Beauty Studio - Premium Cruelty-Free Beauty Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Enhanced Homepage Styles */
+        
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: #F8F4EF;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #F8F4EF 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: #D4AF37;
+            margin-bottom: 32px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-image {
+            display: none;
+        }
+        
+        /* Trust Badges */
+        .trust-badges {
+            background: linear-gradient(to bottom, #F8F4EF 0%, #ffffff 100%);
+            padding: 60px 20px;
+        }
+        
+        .trust-badges h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #111111;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .badge-item {
+            text-align: center;
+            padding: 28px;
+            background: #ffffff;
+            border-radius: 12px;
+            border-left: 4px solid #D4AF37;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .badge-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+        }
+        
+        .badge-item i {
+            font-size: 40px;
+            color: #D4AF37;
+            margin-bottom: 16px;
+        }
+        
+        .badge-item h4 {
+            font-size: 18px;
+            color: #111111;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .badge-item p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Featured Products */
+        .featured-products {
+            background: #111111;
+            padding: 80px 20px;
+            color: #F8F4EF;
+        }
+        
+        .featured-products h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #D4AF37;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #999;
+            font-size: 16px;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        .product-card {
+            background: linear-gradient(to bottom, #1a1a1a 0%, #0f0f0f 100%);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            border-color: #D4AF37;
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+            transform: translateY(-8px);
+        }
+        
+        .product-image {
+            font-size: 60px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card:hover .product-image {
+            opacity: 1;
+        }
+        
+        .product-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .product-card h3 a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .product-card h3 a:hover {
+            color: #F8F4EF;
+        }
+        
+        .price {
+            font-size: 22px;
+            color: #D4AF37;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .rating {
+            color: #D4AF37;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .rating i {
+            margin-right: 4px;
+        }
+        
+        .description {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .btn-add-cart {
+            background: #D4AF37;
+            color: #111111;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-add-cart:hover {
+            background: #F8F4EF;
+            transform: scale(1.02);
+        }
+        
+        /* Best Sellers */
+        .best-sellers {
+            background: linear-gradient(135deg, #F8F4EF 0%, #ffffff 100%);
+            padding: 80px 20px;
+        }
+        
+        .best-sellers h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #111111;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .sellers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .seller-card {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .seller-card:hover {
+            border-color: #D4AF37;
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.15);
+            transform: translateY(-8px);
+        }
+        
+        .badge-bestseller {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #D4AF37;
+            color: #111111;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .seller-card .product-image {
+            font-size: 50px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+        
+        .seller-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #111111;
+        }
+        
+        .seller-card h3 a {
+            color: #111111;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .seller-card h3 a:hover {
+            color: #D4AF37;
+        }
+        
+        .seller-card .price {
+            color: #D4AF37;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .seller-card .rating {
+            color: #D4AF37;
+            margin-bottom: 16px;
+        }
+        
+        /* Category Highlights */
+        .category-highlights {
+            background: #111111;
+        }
+        
+        .highlight-block {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .highlight-black {
+            background: #111111;
+            color: #F8F4EF;
+        }
+        
+        .highlight-ivory {
+            background: #F8F4EF;
+            color: #111111;
+        }
+        
+        .highlight-content h2 {
+            font-size: 40px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .highlight-black h2 {
+            color: #D4AF37;
+        }
+        
+        .highlight-ivory h2 {
+            color: #111111;
+        }
+        
+        .highlight-content p {
+            font-size: 16px;
+            margin-bottom: 28px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        /* Customer Reviews */
+        .customer-reviews {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 80px 20px;
+        }
+        
+        .customer-reviews h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #D4AF37;
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        .review-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .review-card .stars {
+            color: #D4AF37;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .review-card .stars i {
+            margin: 0 4px;
+        }
+        
+        .review-text {
+            color: #F8F4EF;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        
+        .reviewer {
+            color: #D4AF37;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        /* About Section */
+        .about {
+            background: #F8F4EF;
+            padding: 80px 20px;
+        }
+        
+        .about h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #111111;
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-column h3 {
+            font-size: 22px;
+            color: #111111;
+            margin-bottom: 16px;
+            font-weight: 600;
+            border-left: 4px solid #D4AF37;
+            padding-left: 16px;
+        }
+        
+        .about-column p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        .values-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .values-list li {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .values-list i {
+            color: #D4AF37;
+            margin-right: 12px;
+            font-weight: 600;
+        }
+        
+        /* Power Statement */
+        .power-statement {
+            background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: #F8F4EF;
+        }
+        
+        .power-statement h2 {
+            font-size: 44px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #D4AF37;
+        }
+        
+        .power-statement p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+        
+        /* Shop Categories */
+        .shop-categories {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+        
+        .shop-categories h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #111111;
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        
+        .category-card {
+            background: linear-gradient(to bottom, #F8F4EF 0%, #f5f5f5 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            border-color: #D4AF37;
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .category-icon {
+            font-size: 48px;
+            color: #D4AF37;
+            margin-bottom: 16px;
+        }
+        
+        .category-card h3 {
+            font-size: 20px;
+            color: #111111;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .subcategories {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .subcategories li {
+            margin-bottom: 8px;
+        }
+        
+        .subcategories a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+        
+        .subcategories a:hover {
+            color: #D4AF37;
+        }
+        
+        .btn-category {
+            display: inline-block;
+            background: #111111;
+            color: #D4AF37;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid #111111;
+        }
+        
+        .btn-category:hover {
+            background: transparent;
+            border-color: #111111;
+            color: #111111;
+        }
+        
+        .all-products p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Blog Section */
+        .blog {
+            background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+            padding: 80px 20px;
+        }
+        
+        .blog h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #D4AF37;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .blog .section-subtitle {
+            color: #999;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .blog-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            border-color: #D4AF37;
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+            transform: translateY(-8px);
+        }
+        
+        .blog-image {
+            background: linear-gradient(135deg, #D4AF37 0%, #a8860a 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: rgba(248, 244, 239, 0.3);
+        }
+        
+        .blog-card h3 {
+            font-size: 20px;
+            color: #D4AF37;
+            margin: 20px;
+            font-weight: 600;
+        }
+        
+        .blog-card p {
+            color: #999;
+            margin: 0 20px 20px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .blog-link {
+            display: inline-block;
+            margin: 0 20px 20px;
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .blog-link:hover {
+            color: #F8F4EF;
+        }
+        
+        /* Customer Care Section */
+        .customer-care {
+            background: #F8F4EF;
+            padding: 80px 20px;
+        }
+        
+        .customer-care h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #111111;
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+        
+        .care-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+        }
+        
+        .care-card {
+            background: #ffffff;
+            border-left: 4px solid #D4AF37;
+            border-radius: 8px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .care-card:hover {
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .care-card h3 {
+            font-size: 18px;
+            color: #111111;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .care-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 40px;
+            color: #D4AF37;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .newsletter p {
+            color: #F8F4EF;
+            font-size: 16px;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 20px;
+            border: 2px solid #D4AF37;
+            background: transparent;
+            color: #F8F4EF;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(248, 244, 239, 0.6);
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+        
+        .newsletter-form button {
+            padding: 14px 32px;
+            background: #D4AF37;
+            color: #111111;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: #F8F4EF;
+            transform: scale(1.02);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #111111;
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+        
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        
+        .contact-method h3 {
+            font-size: 18px;
+            color: #111111;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .contact-method i {
+            color: #D4AF37;
+            margin-right: 8px;
+        }
+        
+        .contact-method p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .contact-method a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-method a:hover {
+            color: #111111;
+        }
+        
+        .whatsapp-button {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #D4AF37 0%, #a8860a 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: #111111;
+        }
+        
+        .final-cta h2 {
+            font-size: 44px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .final-cta p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Nomnotho Beauty</h1>
+                <p class="tagline">Studio</p>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="shop.html#skincare">Skincare</a>
+                        <a href="shop.html#haircare">Haircare</a>
+                        <a href="shop.html#makeup">Makeup</a>
+                        <a href="shop.html#fragrances">Fragrances (NAS Scents)</a>
+                        <a href="shop.html#starter-packs">Starter Packs</a>
+                        <a href="shop.html">All Products</a>
+                    </div>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="customer-care.html">Customer Care</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="account-icons">
+                    <a href="account.html" title="My Account"><i class="fas fa-user"></i></a>
+                    <a href="cart.html" title="Cart" id="cartLink"><i class="fas fa-shopping-bag"></i> <span id="cartCount" class="cart-count">0</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Luxury Beauty, Redefined.</h1>
+            <p class="hero-subtitle">Premium skincare, haircare, makeup & fragrances curated for confident beauty lovers.</p>
+            <div class="hero-buttons">
+                <a href="shop.html" class="btn-primary">Shop Now</a>
+                <a href="about.html" class="btn-secondary">Start Your Beauty Journey</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-sparkles"></i>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="trust-badges">
+        <div class="container">
+            <h2>Why Nomnotho Beauty Studio</h2>
+            <div class="badges-grid">
+                <div class="badge-item">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Cruelty-Free</h4>
+                    <p>100% Ethical Beauty</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-lock"></i>
+                    <h4>Secure Payments</h4>
+                    <p>Safe & Protected</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-undo"></i>
+                    <h4>14-Day Returns</h4>
+                    <p>Hassle-Free Returns</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-heart"></i>
+                    <h4>Trusted in South Africa</h4>
+                    <p>Loved by Thousands</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <p class="section-subtitle">Curated picks — quality, value and elegance.</p>
+            <div class="products-grid">
+                <div class="product-card" data-id="luxury-skincare-set">
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3><a href="products/luxury-skincare-set.html">Luxury Skincare Set</a></h3>
+                    <p class="price">R399.99</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(248 reviews)</span>
+                    </div>
+                    <p class="description">Complete skincare bundle for radiant skin</p>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-id="premium-hair-oil">
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3><a href="products/premium-hair-oil.html">Premium Hair Oil</a></h3>
+                    <p class="price">R249.99</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(156 reviews)</span>
+                    </div>
+                    <p class="description">Nourish and strengthen your hair</p>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-id="nas-signature-scent">
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3><a href="products/nas-signature-scent.html">NAS Signature Scent</a></h3>
+                    <p class="price">R499.99</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(189 reviews)</span>
+                    </div>
+                    <p class="description">Long-lasting, luxurious fragrance</p>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-id="makeup-starter-kit">
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3><a href="products/makeup-starter-kit.html">Makeup Starter Kit</a></h3>
+                    <p class="price">R599.99</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(312 reviews)</span>
+                    </div>
+                    <p class="description">Everything you need to get started</p>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="best-sellers">
+        <div class="container">
+            <h2>Best Sellers</h2>
+            <p class="section-subtitle">Our customers' favourites — tried and loved.</p>
+            <div class="sellers-grid">
+                <div class="seller-card" data-id="radiant-glow-serum">
+                    <div class="badge-bestseller">BESTSELLER</div>
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3><a href="products/radiant-glow-serum.html">Radiant Glow Serum</a></h3>
+                    <p class="price">R349.99</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.8/5 (427 reviews)</span>
+                    </div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+
+                <div class="seller-card" data-id="growth-shampoo-pro">
+                    <div class="badge-bestseller">BESTSELLER</div>
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3><a href="products/growth-shampoo-pro.html">Growth Shampoo Pro</a></h3>
+                    <p class="price">R199.99</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0/5 (563 reviews)</span>
+                    </div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+
+                <div class="seller-card" data-id="all-day-foundation">
+                    <div class="badge-bestseller">BESTSELLER</div>
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3><a href="products/all-day-foundation.html">All-Day Foundation</a></h3>
+                    <p class="price">R249.99</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>4.7/5 (328 reviews)</span>
+                    </div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Highlights - Alternating -->
+    <section class="category-highlights">
+        <div class="highlight-block highlight-black">
+            <div class="container">
+                <div class="highlight-content">
+                    <h2>Explore Skincare</h2>
+                    <p>Discover our collection of luxurious skincare products designed to transform your complexion. From cleansers to serums, find everything your skin desires.</p>
+                    <a href="shop.html#skincare" class="btn-primary">Explore Skincare</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-block highlight-ivory">
+            <div class="container">
+                <div class="highlight-content">
+                    <h2>Discover NAS Scents</h2>
+                    <p>Experience luxury fragrances that last. Our NAS Scents collection includes women's, men's, and unisex perfumes crafted for sophistication.</p>
+                    <a href="shop.html#fragrances" class="btn-secondary">Discover NAS Scents</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-block highlight-black">
+            <div class="container">
+                <div class="highlight-content">
+                    <h2>Premium Haircare</h2>
+                    <p>Restore and revitalize your hair with our carefully curated haircare collection. From growth serums to intensive treatments, achieve your best hair.</p>
+                    <a href="shop.html#haircare" class="btn-primary">View Haircare</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="customer-reviews">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Nomnotho Beauty changed my skincare routine completely. The products are amazing and cruelty-free!"</p>
+                    <p class="reviewer">— Sarah M.</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Best haircare products I've ever used. My hair has never felt better. Highly recommend!"</p>
+                    <p class="reviewer">— Thabo K.</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">"Fast shipping, quality products, and excellent customer service. Will definitely order again!"</p>
+                    <p class="reviewer">— Naledi T.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-grid">
+                <div class="about-column">
+                    <h3>Our Story</h3>
+                    <p>Nomnotho Beauty Studio was founded on the belief that everyone deserves access to premium, cruelty-free beauty products. We are dedicated to providing high-quality skincare, haircare, makeup, and fragrances that enhance natural beauty without compromising ethical values. Our mission is to empower individuals to feel confident and beautiful.</p>
+                </div>
+                <div class="about-column">
+                    <h3>Our Values</h3>
+                    <ul class="values-list">
+                        <li><i class="fas fa-check"></i> <strong>Cruelty-Free:</strong> No animal testing, 100% ethical</li>
+                        <li><i class="fas fa-check"></i> <strong>Quality:</strong> Premium ingredients and formulations</li>
+                        <li><i class="fas fa-check"></i> <strong>Inclusivity:</strong> Beauty for everyone</li>
+                        <li><i class="fas fa-check"></i> <strong>Transparency:</strong> Honest about our products</li>
+                        <li><i class="fas fa-check"></i> <strong>Excellence:</strong> Premium experience always</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Power Statement Section -->
+    <section class="power-statement">
+        <div class="container">
+            <h2>Beauty is Power. Own Yours.</h2>
+            <p>At Nomnotho Beauty Studio, we believe that when you look good, you feel powerful. Our carefully curated collection is designed to help you express your authentic self with confidence and grace.</p>
+            <a href="#shop" class="btn-primary">Shop the Collection</a>
+        </div>
+    </section>
+
+    <!-- Shop Categories Section -->
+    <section id="shop" class="shop-categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="categories-grid">
+                <div id="skincare" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Skincare</h3>
+                    <ul class="subcategories">
+                        <li><a href="#skincare-cleansers">Cleansers</a></li>
+                        <li><a href="#skincare-toners">Toners</a></li>
+                        <li><a href="#skincare-serums">Serums</a></li>
+                        <li><a href="#skincare-moisturisers">Moisturisers</a></li>
+                        <li><a href="#skincare-oils">Face Oils</a></li>
+                        <li><a href="#skincare-body">Body Care</a></li>
+                        <li><a href="#skincare-bundles">Skincare Bundles</a></li>
+                    </ul>
+                    <a href="#skincare-all" class="btn-category">Explore Skincare</a>
+                </div>
+
+                <div id="haircare" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>Haircare</h3>
+                    <ul class="subcategories">
+                        <li><a href="#haircare-shampoos">Shampoos</a></li>
+                        <li><a href="#haircare-conditioners">Conditioners</a></li>
+                        <li><a href="#haircare-oils">Hair Oils</a></li>
+                        <li><a href="#haircare-treatments">Treatments & Masks</a></li>
+                        <li><a href="#haircare-growth">Growth & Repair</a></li>
+                        <li><a href="#haircare-bundles">Haircare Bundles</a></li>
+                    </ul>
+                    <a href="#haircare-all" class="btn-category">View Haircare</a>
+                </div>
+
+                <div id="makeup" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Makeup</h3>
+                    <ul class="subcategories">
+                        <li><a href="#makeup-face">Face (Foundation, Concealer, Powder)</a></li>
+                        <li><a href="#makeup-eyes">Eyes (Eyeshadow, Mascara, Liner)</a></li>
+                        <li><a href="#makeup-lips">Lips (Lipstick, Gloss, Liner)</a></li>
+                        <li><a href="#makeup-sets">Makeup Sets</a></li>
+                    </ul>
+                    <a href="#makeup-all" class="btn-category">Browse Makeup</a>
+                </div>
+
+                <div id="fragrances" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-bottle-water"></i>
+                    </div>
+                    <h3>Fragrances (NAS Scents)</h3>
+                    <ul class="subcategories">
+                        <li><a href="#fragrances-women">Women's Perfumes</a></li>
+                        <li><a href="#fragrances-men">Men's Perfumes</a></li>
+                        <li><a href="#fragrances-unisex">Unisex Scents</a></li>
+                        <li><a href="#fragrances-sets">Perfume Sets</a></li>
+                        <li><a href="#fragrances-long">Long-Lasting Scents</a></li>
+                    </ul>
+                    <a href="#fragrances-all" class="btn-category">Discover NAS Scents</a>
+                </div>
+
+                <div id="starter-packs" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Starter Packs</h3>
+                    <ul class="subcategories">
+                        <li><a href="#starter-kits">Beauty Starter Kits</a></li>
+                        <li><a href="#reseller-packs">Reseller / Business Packs</a></li>
+                        <li><a href="#digital-guides">Digital Beauty Guides</a></li>
+                    </ul>
+                    <a href="#starter-all" class="btn-category">Start Your Beauty Journey</a>
+                </div>
+
+                <div class="category-card all-products">
+                    <div class="category-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <h3>All Products</h3>
+                    <p>Browse our complete collection of premium beauty products</p>
+                    <a href="#shop-all" class="btn-category">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2>Beauty Blog</h2>
+            <p class="section-subtitle">Expert tips, guides, and beauty education to enhance your routine</p>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Skincare Tips for Radiant Skin</h3>
+                    <p>Discover the essential skincare routine that will transform your complexion. Learn the best practices for a glowing, healthy skin.</p>
+                    <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Haircare Advice for Every Hair Type</h3>
+                    <p>Whether you have curly, straight, or textured hair, find personalized advice to keep your locks healthy and beautiful.</p>
+                    <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Beauty Education: Understanding Ingredients</h3>
+                    <p>Learn about key beauty ingredients and how they work. Make informed choices about the products you use on your skin.</p>
+                    <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Care Section -->
+    <section id="customer-care" class="customer-care">
+        <div class="container">
+            <h2>Customer Care</h2>
+            <div class="care-grid">
+                <div class="care-card">
+                    <h3>FAQs</h3>
+                    <p>Find answers to common questions about our products, orders, and policies.</p>
+                    <a href="#" class="btn-category">View FAQs</a>
+                </div>
+                <div class="care-card">
+                    <h3>Shipping & Delivery</h3>
+                    <p>Fast, secure delivery to your doorstep. Learn about our shipping options and delivery times.</p>
+                    <a href="#" class="btn-category">Learn More</a>
+                </div>
+                <div class="care-card">
+                    <h3>Returns & Refunds (14 Days)</h3>
+                    <p>Not satisfied? We offer hassle-free returns within 14 days of purchase.</p>
+                    <a href="#" class="btn-category">Return Policy</a>
+                </div>
+                <div class="care-card">
+                    <h3>POPIA Policy</h3>
+                    <p>Your privacy is important to us. Learn how we protect your personal information.</p>
+                    <a href="#" class="btn-category">Read Policy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Beauty Community</h2>
+            <p>Subscribe to get exclusive offers, beauty tips, and updates on new product launches delivered to your inbox.</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-form-section">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-section">
+                    <div class="contact-method">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <p><a href="mailto:info@nomnothobeauty.co.za">info@nomnothobeauty.co.za</a></p>
+                    </div>
+                    <div class="contact-method">
+                        <h3><i class="fas fa-phone"></i> Phone</h3>
+                        <p><a href="tel:+27123456789">+27 (0)12 345 6789</a></p>
+                    </div>
+                    <div class="contact-method whatsapp-contact">
+                        <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+                        <p><a href="https://wa.me/27123456789" target="_blank">Chat with us on WhatsApp</a></p>
+                    </div>
+                    <div class="contact-method">
+                        <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 5:00 PM (SAST)</p>
+                        <p>Saturday: 10:00 AM - 3:00 PM</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating WhatsApp Button -->
+            <a href="https://wa.me/27123456789" class="whatsapp-button" target="_blank" title="Chat on WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Start Your Beauty Journey Today.</h2>
+            <p>Discover premium beauty products that celebrate your authentic self.</p>
+            <a href="#shop" class="btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Customer Support</h4>
+                    <ul>
+                        <li><a href="#customer-care">Help Centre</a></li>
+                        <li><a href="#customer-care">FAQs</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#customer-care">Shipping & Delivery</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">POPIA Compliance</a></li>
+                        <li><a href="#">Returns & Refund Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/27123456789" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Payment Methods</h4>
+                    <div class="payment-icons">
+                        <i class="fas fa-credit-card"></i>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p>
+                <p>Crafted with love for confident, beautiful you.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Newsletter subscription
+        function subscribeNewsletter(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            
+            // Store subscription
+            let subscriptions = JSON.parse(localStorage.getItem('nb_subscriptions') || '[]');
+            if (!subscriptions.includes(email)) {
+                subscriptions.push(email);
+                localStorage.setItem('nb_subscriptions', JSON.stringify(subscriptions));
+            }
+            
+            alert('Thanks for subscribing! 🎉 Check your email for exclusive offers.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>

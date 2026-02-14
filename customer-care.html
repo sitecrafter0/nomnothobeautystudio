@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Customer Care — Nomnotho Beauty Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Customer Care Page Styles */
+    .cc-hero {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.8) 0%, rgba(17, 17, 17, 0.6) 100%), 
+                  url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200') center/cover;
+      color: var(--ivory);
+      padding: 5rem 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .cc-hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .cc-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .quick-link-card {
+      background: linear-gradient(135deg, rgba(245, 245, 245, 1) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .quick-link-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+    }
+    
+    .quick-link-card i {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    
+    .quick-link-card h3 {
+      color: var(--black);
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    
+    .quick-link-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+    }
+    
+    .care-section {
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: var(--ivory);
+      border-radius: 8px;
+    }
+    
+    .care-section h2 {
+      font-size: 2rem;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .care-section h2 i {
+      color: var(--gold);
+      font-size: 1.8rem;
+    }
+    
+    .care-content {
+      color: var(--dark-gray);
+      line-height: 1.8;
+    }
+    
+    .care-content h3 {
+      color: var(--black);
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .care-content ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+    
+    .care-content li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    
+    .care-content li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: bold;
+    }
+    
+    .policy-box {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(245, 245, 245, 1) 100%);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    
+    .policy-box strong {
+      color: var(--black);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .faq-item {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      background: linear-gradient(135deg, rgba(245, 245, 245, 1) 0%, rgba(212, 175, 55, 0.05) 100%);
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    
+    .faq-question:hover {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(245, 245, 245, 1) 100%);
+    }
+    
+    .faq-question h4 {
+      margin: 0;
+      color: var(--black);
+      font-size: 1rem;
+    }
+    
+    .faq-toggle {
+      color: var(--gold);
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-toggle {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 1.5rem;
+      color: var(--dark-gray);
+      display: none;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    
+    .contact-section {
+      background: var(--black);
+      color: var(--ivory);
+      padding: 3rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .contact-section h2 {
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-section p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .contact-method {
+      background: rgba(248, 244, 239, 0.1);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    
+    .contact-method i {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .contact-method h3 {
+      color: var(--ivory);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-method p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    
+    .contact-method a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    
+    .contact-method a:hover {
+      text-decoration: underline;
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    
+    .tab-button {
+      padding: 1rem 1.5rem;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--dark-gray);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .tab-button.active {
+      border-bottom-color: var(--gold);
+      color: var(--black);
+      font-weight: 600;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .cc-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .quick-links {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-methods {
+        grid-template-columns: 1fr;
+      }
+      
+      .tabs {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><h1>Nomnotho Beauty</h1><p class="tagline">Studio</p></div>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="customer-care.html">Customer Care</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="account-icons"><a href="account.html"><i class="fas fa-user"></i></a><a href="cart.html"><i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="cc-hero">
+      <h1>We're Here to Help</h1>
+      <p>Your satisfaction is our priority. Find answers, track orders, and connect with our expert team.</p>
+    </section>
+
+    <div class="container">
+      <!-- Quick Links -->
+      <div class="quick-links">
+        <div class="quick-link-card" onclick="scrollToSection('shipping')">
+          <i class="fas fa-truck"></i>
+          <h3>Shipping & Delivery</h3>
+          <p>Learn about our delivery options and timelines</p>
+        </div>
+        <div class="quick-link-card" onclick="scrollToSection('returns')">
+          <i class="fas fa-undo"></i>
+          <h3>Returns & Refunds</h3>
+          <p>Easy 14-day return policy</p>
+        </div>
+        <div class="quick-link-card" onclick="scrollToSection('orders')">
+          <i class="fas fa-box"></i>
+          <h3>Track Your Order</h3>
+          <p>Find your order status and tracking info</p>
+        </div>
+        <div class="quick-link-card" onclick="scrollToSection('contact')">
+          <i class="fas fa-headset"></i>
+          <h3>Contact Support</h3>
+          <p>Reach our customer service team</p>
+        </div>
+      </div>
+
+      <!-- Shipping & Delivery Section -->
+      <section class="care-section" id="shipping">
+        <h2><i class="fas fa-truck"></i> Shipping & Delivery</h2>
+        <div class="care-content">
+          <p>We're committed to getting your beauty essentials to you quickly and safely. Here's what you need to know:</p>
+          
+          <h3>Delivery Options</h3>
+          <ul>
+            <li><strong>Standard Delivery (3-5 business days):</strong> Free on orders over R250. Cost: R50 for orders under R250.</li>
+            <li><strong>Express Delivery (1-2 business days):</strong> Available for R99. Perfect for urgent orders.</li>
+            <li><strong>Same-Day Delivery:</strong> Available in selected areas for R149. Order before 12 PM for same-day delivery.</li>
+          </ul>
+          
+          <h3>Delivery Areas</h3>
+          <ul>
+            <li>All major cities and towns across South Africa</li>
+            <li>Remote areas: Additional 2-3 business days</li>
+            <li>International shipping: Contact us for rates</li>
+          </ul>
+          
+          <div class="policy-box">
+            <strong>📦 Order Tracking</strong>
+            <p>Once your order ships, you'll receive a tracking number via email. You can monitor your package's journey in real-time on our website or through our partner courier.</p>
+          </div>
+          
+          <h3>What to Expect</h3>
+          <ul>
+            <li>Secure, professional packaging to protect your products</li>
+            <li>Discreet packaging for privacy</li>
+            <li>Real-time tracking updates</li>
+            <li>Signature confirmation for high-value orders</li>
+            <li>Eco-friendly packaging materials</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Returns & Refunds Section -->
+      <section class="care-section" id="returns">
+        <h2><i class="fas fa-undo"></i> Returns & Refunds Policy</h2>
+        <div class="care-content">
+          <p>We want you to love every purchase. If a product doesn't work for you, we make returns easy:</p>
+          
+          <div class="policy-box">
+            <strong>✓ 14-Day Returns Policy</strong>
+            <p>Return any unused, unopened product within 14 days of purchase for a full refund. If you've opened a product and it didn't work for your skin, contact us — we may still be able to help!</p>
+          </div>
+          
+          <h3>How to Return</h3>
+          <ul>
+            <li>Contact our support team with your order number</li>
+            <li>Provide a brief reason for return (helps us improve)</li>
+            <li>We'll provide a prepaid return label</li>
+            <li>Ship the product back to us</li>
+            <li>Receive your refund within 5-7 business days of us receiving the item</li>
+          </ul>
+          
+          <h3>Return Eligibility</h3>
+          <ul>
+            <li>Products must be returned within 14 days of purchase</li>
+            <li>Items must be unused and in original packaging (for opened items, contact support)</li>
+            <li>Refunds are processed to the original payment method</li>
+            <li>For defective or damaged items, contact us immediately with photos</li>
+          </ul>
+          
+          <div class="policy-box">
+            <strong>🎁 Damaged or Defective Items</strong>
+            <p>If your product arrives damaged or is defective, contact us immediately with photos. We'll send a replacement or refund right away at no cost to you.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Track Orders Section -->
+      <section class="care-section" id="orders">
+        <h2><i class="fas fa-box"></i> Track Your Order</h2>
+        <div class="care-content">
+          <h3>How to Track</h3>
+          <ul>
+            <li>Check your email for the shipping confirmation with tracking number</li>
+            <li>Log into your account and view order history</li>
+            <li>Use the tracking number to monitor your package in real-time</li>
+            <li>Contact us if you don't receive tracking information within 24 hours</li>
+          </ul>
+          
+          <h3>Order Status Guide</h3>
+          <div class="policy-box">
+            <strong>Processing:</strong> Your order is being prepared for shipment (1-24 hours)
+          </div>
+          <div class="policy-box">
+            <strong>Shipped:</strong> Your order is on its way (tracking active)
+          </div>
+          <div class="policy-box">
+            <strong>In Transit:</strong> Your package is with our courier
+          </div>
+          <div class="policy-box">
+            <strong>Out for Delivery:</strong> Your order will arrive today
+          </div>
+          <div class="policy-box">
+            <strong>Delivered:</strong> Order successfully delivered
+          </div>
+          
+          <h3>Common Issues</h3>
+          <ul>
+            <li><strong>Order delayed:</strong> Contact us with your order number and we'll investigate</li>
+            <li><strong>Lost package:</strong> We'll work with the courier and replace or refund</li>
+            <li><strong>Can't track order:</strong> Check your email or log into your account</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="care-section">
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item active">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>How do I place an order?</h4>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Browse our shop, add products to your cart, proceed to checkout, and complete payment. You'll receive an order confirmation email immediately, followed by shipping confirmation within 24 hours.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>What payment methods do you accept?</h4>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>We accept all major credit cards (Visa, Mastercard), PayPal, bank transfers, and other secure payment methods. All transactions are encrypted and secure.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>Are all your products cruelty-free?</h4>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! 100% of our products are certified cruelty-free. We work exclusively with brands that don't test on animals and share our ethical values.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>How long does delivery usually take?</h4>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Standard delivery typically takes 3-5 business days. Express delivery is available for 1-2 business days, and same-day delivery is available in selected areas. Delivery times are from when your order ships, not from when you place it.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>Do you ship internationally?</h4>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we ship internationally! Contact us with your location and we'll provide shipping rates and timelines. International orders may take 7-14 business days depending on destination.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>Can I modify or cancel my order?</h4>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Orders can be modified or cancelled within 2 hours of placement. After that, your order enters our fulfillment process. Contact us immediately if you need to make changes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>What if a product doesn't work for my skin?</h4>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>We understand that everyone's skin is different. If a product causes irritation or doesn't work for you, contact our team with details. We may be able to offer an alternative product or process a return even if opened.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>How do you protect my personal information?</h4>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Your privacy and data security are paramount. We use industry-standard SSL encryption, comply with POPIA regulations, and never share your information with third parties without consent. See our full Privacy Policy for details.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="contact-section" id="contact">
+        <h2>Need Additional Help?</h2>
+        <p>Our dedicated customer service team is ready to assist you. Choose your preferred method of contact:</p>
+        
+        <div class="contact-methods">
+          <div class="contact-method">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p><a href="mailto:support@nomnothobeauty.com">support@nomnothobeauty.com</a></p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Response within 24 hours</p>
+          </div>
+          <div class="contact-method">
+            <i class="fab fa-whatsapp"></i>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/27123456789">+27 123 456 789</a></p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Chat with us instantly</p>
+          </div>
+          <div class="contact-method">
+            <i class="fas fa-phone"></i>
+            <h3>Phone</h3>
+            <p><a href="tel:+27123456789">+27 (0)12 345 6789</a></p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Mon-Fri, 9AM-5PM SAST</p>
+          </div>
+          <div class="contact-method">
+            <i class="fas fa-comments"></i>
+            <h3>Live Chat</h3>
+            <p><a href="contact.html">Start a conversation</a></p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Available during business hours</p>
+          </div>
+        </div>
+        
+        <a href="contact.html" class="btn-primary" style="margin-top: 2rem;">Go to Contact Page</a>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    function toggleFAQ(element) {
+      const faqItem = element.parentElement;
+      faqItem.classList.toggle('active');
+    }
+    
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Customer Support</h4>
+          <ul>
+            <li><a href="customer-care.html">Help Centre</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">POPIA Compliance</a></li>
+            <li><a href="#">Returns & Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/27123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Payment Methods</h4>
+          <div class="payment-icons"><i class="fas fa-credit-card"></i><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p></div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

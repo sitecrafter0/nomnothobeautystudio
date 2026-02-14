@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Order Confirmation — Nomnotho Beauty Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .confirmation{ padding:80px 0; text-align:center }
+    .confirmation-box{ display:inline-block; background:var(--white); padding:28px; border-radius:12px; box-shadow:var(--shadow); max-width:720px }
+    .order-id{ font-weight:800; color:var(--black); margin-top:8px }
+    .order-items{ text-align:left; margin-top:14px }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><h1>Nomnotho Beauty</h1><p class="tagline">Studio</p></div>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="customer-care.html">Customer Care</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="account-icons"><a href="account.html"><i class="fas fa-user"></i></a><a href="cart.html"><i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="confirmation">
+      <div class="container">
+        <div class="confirmation-box" id="confirmationBox">
+          <h2>Thank you for your order</h2>
+          <p class="muted">Your payment was successful (demo).</p>
+          <div>Your Order ID:</div>
+          <div class="order-id" id="orderId">—</div>
+          <div class="order-items" id="orderItems"></div>
+          <div style="margin-top:18px"><a href="index.html" class="btn-primary">Continue Shopping</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><div class="footer-bottom"><p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p></div></div>
+  </footer>
+
+  <script>
+    (function(){
+      try{
+        const order = JSON.parse(localStorage.getItem('nb_last_order')) || null;
+        if(order){
+          document.getElementById('orderId').textContent = order.id || '—';
+          const itemsEl = document.getElementById('orderItems');
+          if(order.items && order.items.length){
+            const ul = document.createElement('div');
+            order.items.forEach(it=>{
+              const p = document.createElement('p');
+              p.textContent = `${it.name} x ${it.qty} — R${(it.price*it.qty).toFixed(2)}`;
+              ul.appendChild(p);
+            });
+            const total = document.createElement('p');
+            total.style.fontWeight = '800';
+            total.textContent = `Total: R${order.total}`;
+            itemsEl.appendChild(ul);
+            itemsEl.appendChild(total);
+          }
+        } else {
+          document.getElementById('orderId').textContent = 'No recent order found.';
+        }
+      }catch(e){ document.getElementById('orderId').textContent = 'Error reading order.' }
+    })();
+  </script>
+</body>
+</html>

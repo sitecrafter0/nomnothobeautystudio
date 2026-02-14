@@ -3,9 +3,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Premium Hair Oil — Nomnotho Beauty Studio</title>
-  <link rel="stylesheet" href="../styles.css">
+  <title>Premium Hair Oil - Nomnotho Beauty Studio</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .product-hero {background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%); color: #F8F4EF; padding: 20px; margin-bottom: 40px; border-bottom: 3px solid #D4AF37;}
+    .breadcrumb {font-size: 13px; margin-bottom: 16px; color: #999;}
+    .breadcrumb a {color: #D4AF37; text-decoration: none; font-weight: 600;}
+    .product-container {max-width: 1200px; margin: 0 auto; padding: 20px;}
+    .product-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 60px;}
+    .product-image-section {display: flex; flex-direction: column; gap: 16px;}
+    .product-main-image {background: linear-gradient(135deg, #F8F4EF 0%, #f5f5f5 100%); border-radius: 12px; height: 400px; display: flex; align-items: center; justify-content: center; font-size: 120px; color: #D4AF37; border: 2px solid #e0e0e0;}
+    .product-thumbnails {display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;}
+    .thumbnail {background: #F8F4EF; border-radius: 8px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: #D4AF37; border: 2px solid #e0e0e0; cursor: pointer; transition: all 0.3s ease;}
+    .thumbnail:hover {border-color: #D4AF37; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);}
+    .product-details {display: flex; flex-direction: column; gap: 24px;}
+    .product-details h1 {font-size: 40px; color: #111111; font-weight: 700; margin: 0;}
+    .product-rating {display: flex; align-items: center; gap: 12px; padding: 16px 0; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;}
+    .stars {color: #D4AF37; font-size: 16px;}
+    .rating-text {color: #666; font-size: 14px;}
+    .price-section {display: flex; align-items: center; gap: 16px; padding: 16px; background: #F8F4EF; border-radius: 8px;}
+    .price {font-size: 36px; color: #D4AF37; font-weight: 700; margin: 0;}
+    .discount-badge {background: #D4AF37; color: #111111; padding: 8px 12px; border-radius: 6px; font-weight: 700; font-size: 12px;}
+    .product-description {color: #333; line-height: 1.8; font-size: 15px;}
+    .product-highlights {background: #ffffff; border: 2px solid #e0e0e0; border-radius: 8px; padding: 20px;}
+    .product-highlights h3 {font-size: 16px; color: #111111; margin: 0 0 12px; font-weight: 700;}
+    .highlights-list {list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+    .highlights-list li {display: flex; align-items: center; gap: 8px; color: #333; font-size: 14px;}
+    .highlights-list i {color: #D4AF37; font-weight: 700;}
+    .product-actions {display: flex; gap: 12px; flex-wrap: wrap;}
+    .btn-add-cart {flex: 1; min-width: 200px; background: #D4AF37; color: #111111; border: none; padding: 16px 24px; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;}
+    .btn-add-cart:hover {background: #111111; color: #D4AF37;}
+    .btn-wishlist {background: #ffffff; color: #D4AF37; border: 2px solid #D4AF37; padding: 14px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;}
+    .btn-wishlist:hover {background: #D4AF37; color: #111111;}
+    .quantity-selector {display: flex; align-items: center; gap: 12px; border: 2px solid #e0e0e0; border-radius: 8px; padding: 0; width: fit-content;}
+    .qty-btn {background: none; border: none; width: 40px; height: 40px; cursor: pointer; color: #111111; font-weight: 700; transition: background 0.3s ease;}
+    .qty-btn:hover {background: #F8F4EF;}
+    .qty-input {width: 50px; text-align: center; border: none; font-weight: 600; font-size: 16px;}
+    .product-meta {display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px; background: #F8F4EF; border-radius: 8px;}
+    .meta-item {display: flex; flex-direction: column; gap: 4px;}
+    .meta-label {font-size: 12px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;}
+    .meta-value {color: #111111; font-weight: 600;}
+    .tabs {margin: 60px 0;}
+    .tab-headers {display: flex; gap: 0; border-bottom: 2px solid #e0e0e0; margin-bottom: 32px; flex-wrap: wrap;}
+    .tab-header {background: none; border: none; padding: 16px 24px; font-size: 16px; font-weight: 600; color: #666; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s ease; position: relative; margin-bottom: -2px;}
+    .tab-header.active {color: #111111; border-bottom-color: #D4AF37;}
+    .tab-content {display: none;}
+    .tab-content.active {display: block;}
+    .ingredients-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;}
+    .ingredient-card {background: #F8F4EF; padding: 20px; border-radius: 8px; border-left: 4px solid #D4AF37;}
+    .ingredient-card h4 {color: #111111; margin: 0 0 8px; font-weight: 700;}
+    .ingredient-card p {color: #333; font-size: 14px; margin: 0; line-height: 1.6;}
+    .reviews-section {padding: 32px; background: #ffffff; border: 2px solid #e0e0e0; border-radius: 8px;}
+    .review-item {padding: 24px; border-bottom: 1px solid #e0e0e0; display: flex; gap: 20px;}
+    .review-item:last-child {border-bottom: none;}
+    .review-avatar {width: 50px; height: 50px; background: #D4AF37; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #111111; font-weight: 700; flex-shrink: 0;}
+    .review-content {flex: 1;}
+    .review-header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;}
+    .review-author {font-weight: 700; color: #111111;}
+    .review-date {color: #999; font-size: 12px;}
+    .review-stars {color: #D4AF37; font-size: 14px; margin-bottom: 8px;}
+    .review-text {color: #333; line-height: 1.6; font-size: 14px;}
+    .related-products {margin-top: 60px;}
+    .related-products h2 {font-size: 32px; color: #111111; margin-bottom: 32px; font-weight: 700;}
+    .related-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;}
+    .related-card {background: #ffffff; border: 2px solid #e0e0e0; border-radius: 8px; overflow: hidden; transition: all 0.3s ease; text-decoration: none; color: inherit;}
+    .related-card:hover {border-color: #D4AF37; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15); transform: translateY(-4px);}
+    .related-image {background: #F8F4EF; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 60px; color: #D4AF37;}
+    .related-info {padding: 20px;}
+    .related-info h3 {margin: 0 0 8px; color: #111111; font-weight: 700;}
+    .related-price {color: #D4AF37; font-weight: 700; font-size: 18px;}
+    @media (max-width: 768px) {.product-grid {grid-template-columns: 1fr; gap: 32px;} .product-details h1 {font-size: 28px;} .price {font-size: 28px;} .highlights-list {grid-template-columns: 1fr;}}
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -13,42 +82,197 @@
       <div class="logo"><h1>Nomnotho Beauty</h1><p class="tagline">Studio</p></div>
       <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
       <ul class="nav-menu" id="navMenu">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../shop.html">Shop</a></li>
-        <li><a href="../about.html">About Us</a></li>
-        <li><a href="../blog.html">Blog</a></li>
-        <li><a href="../customer-care.html">Customer Care</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-        <li class="account-icons"><a href="../account.html"><i class="fas fa-user"></i></a><a href="../cart.html"><i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span></a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="customer-care.html">Customer Care</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="account-icons"><a href="account.html"><i class="fas fa-user"></i></a><a href="cart.html"><i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span></a></li>
       </ul>
     </div>
   </nav>
 
-  <main>
-    <section class="product-page" data-id="premium-hair-oil">
-      <div class="container">
-        <div class="product-grid">
-          <div class="product-image"><i class="fas fa-box"></i></div>
-          <div class="product-details">
-            <h1>Premium Hair Oil</h1>
-            <p class="price">R249.99</p>
-            <p>Nourish and strengthen your hair with our premium blend of oils and nutrients.</p>
-            <div class="product-actions">
-              <button class="btn-add-cart">Add to Cart</button>
-              <a href="../cart.html" class="btn-secondary">View Cart</a>
-            </div>
-            <div class="product-meta"><strong>Category:</strong> Haircare</div>
+  <section class="product-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <span>Premium Hair Oil</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="product-container">
+    <section class="product-section" data-id="premium-hair-oil">
+      <div class="product-grid">
+        <div class="product-image-section">
+          <div class="product-main-image"><i class="fas fa-droplet"></i></div>
+          <div class="product-thumbnails">
+            <div class="thumbnail"><i class="fas fa-droplet"></i></div>
+            <div class="thumbnail"><i class="fas fa-leaf"></i></div>
+            <div class="thumbnail"><i class="fas fa-sparkles"></i></div>
+            <div class="thumbnail"><i class="fas fa-heart"></i></div>
           </div>
         </div>
+
+        <div class="product-details">
+          <h1>Premium Hair Oil</h1>
+          <div class="product-rating">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <span class="rating-text">4.7/5 (312 reviews)</span>
+          </div>
+
+          <div class="price-section">
+            <p class="price">R249.99</p>
+            <span class="discount-badge">Hair Nourishment</span>
+          </div>
+
+          <p class="product-description">Luxurious blend of argan, coconut, and jojoba oils infused with nourishing botanicals. Tame frizz, enhance shine, and repair damage with this multi-purpose hair oil that works on all hair types.</p>
+
+          <div class="product-highlights">
+            <h3>Key Benefits</h3>
+            <ul class="highlights-list">
+              <li><i class="fas fa-check"></i> Repairs & nourishes</li>
+              <li><i class="fas fa-check"></i> Reduces frizz</li>
+              <li><i class="fas fa-check"></i> Enhances shine</li>
+              <li><i class="fas fa-check"></i> Heat protectant</li>
+            </ul>
+          </div>
+
+          <div class="product-meta">
+            <div class="meta-item"><span class="meta-label">Category</span><span class="meta-value">Hair Care</span></div>
+            <div class="meta-item"><span class="meta-label">Size</span><span class="meta-value">100ml</span></div>
+            <div class="meta-item"><span class="meta-label">Cruelty-Free</span><span class="meta-value">Yes</span></div>
+            <div class="meta-item"><span class="meta-label">Stock</span><span class="meta-value">In Stock</span></div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="quantity-selector">
+              <button class="qty-btn" onclick="decreaseQty()">-</button>
+              <input type="number" class="qty-input" id="quantity" value="1" min="1">
+              <button class="qty-btn" onclick="increaseQty()">+</button>
+            </div>
+            <span style="color: #666; font-size: 14px;">Qty</span>
+          </div>
+
+          <div class="product-actions">
+            <button class="btn-add-cart" onclick="addToCart('premium-hair-oil', 'Premium Hair Oil', 249.99)">
+              <i class="fas fa-shopping-bag"></i> Add to Cart
+            </button>
+            <button class="btn-wishlist" onclick="toggleWishlist()">
+              <i class="far fa-heart"></i> Save for Later
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tabs">
+      <div class="tab-headers">
+        <button class="tab-header active" onclick="switchTab(event, 'description')">Description</button>
+        <button class="tab-header" onclick="switchTab(event, 'ingredients')">Ingredients</button>
+        <button class="tab-header" onclick="switchTab(event, 'usage')">How to Use</button>
+        <button class="tab-header" onclick="switchTab(event, 'reviews')">Reviews</button>
+      </div>
+
+      <div id="description" class="tab-content active">
+        <h3 style="color: #111111; margin-bottom: 16px;">Product Description</h3>
+        <p style="color: #333; line-height: 1.8; margin-bottom: 16px;">Our Premium Hair Oil is a luxurious blend designed to restore vitality and shine to all hair types. Enriched with argan, coconut, and jojoba oils, it penetrates deep into the hair shaft to repair damage and nourish from within.</p>
+        <p style="color: #333; line-height: 1.8;">Use as a pre-shampoo treatment, scalp massage oil, or finishing serum. This versatile formula protects against heat styling and environmental damage while leaving your hair silky, smooth, and irresistibly fragrant.</p>
+      </div>
+
+      <div id="ingredients" class="tab-content">
+        <h3 style="color: #111111; margin-bottom: 20px;">Key Ingredients</h3>
+        <div class="ingredients-grid">
+          <div class="ingredient-card"><h4>Argan Oil</h4><p>Rich in antioxidants and vitamin E, repairs and strengthens hair while adding natural shine.</p></div>
+          <div class="ingredient-card"><h4>Coconut Oil</h4><p>Deep conditioning properties that nourish and seal moisture into the hair strand.</p></div>
+          <div class="ingredient-card"><h4>Jojoba Oil</h4><p>Balances scalp oils and promotes healthy hair growth from the roots.</p></div>
+          <div class="ingredient-card"><h4>Vitamin E</h4><p>Powerful antioxidant that protects hair from damage and oxidative stress.</p></div>
+        </div>
+      </div>
+
+      <div id="usage" class="tab-content">
+        <h3 style="color: #111111; margin-bottom: 16px;">How to Use</h3>
+        <ol style="color: #333; line-height: 1.8;">
+          <li style="margin-bottom: 12px;"><strong>Pre-Shampoo:</strong> Apply to dry hair 15 minutes before shampooing.</li>
+          <li style="margin-bottom: 12px;"><strong>Scalp Treatment:</strong> Massage 5-10 drops into scalp and leave overnight.</li>
+          <li style="margin-bottom: 12px;"><strong>Finishing Serum:</strong> Apply 2-3 drops to damp ends after styling.</li>
+          <li><strong>Frequency:</strong> Use 2-3 times weekly for best results.</li>
+        </ol>
+        <p style="color: #666; margin-top: 20px; font-style: italic;">Perfect for all hair types including dry, curly, and damaged hair.</p>
+      </div>
+
+      <div id="reviews" class="tab-content">
+        <h3 style="color: #111111; margin-bottom: 20px;">Customer Reviews (312)</h3>
+        <div class="reviews-section">
+          <div class="review-item">
+            <div class="review-avatar">TM</div>
+            <div class="review-content">
+              <div class="review-header">
+                <span class="review-author">Thembi M.</span>
+                <span class="review-date">3 days ago</span>
+              </div>
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p class="review-text">"My hair has never been shinier and softer! This oil is amazing for pre-shampoo treatments. Highly recommend!"</p>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-avatar">KN</div>
+            <div class="review-content">
+              <div class="review-header">
+                <span class="review-author">Khanyi N.</span>
+                <span class="review-date">1 week ago</span>
+              </div>
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+              <p class="review-text">"Love the scent and how smooth my curls feel after using this. Great investment!"</p>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-avatar">LP</div>
+            <div class="review-content">
+              <div class="review-header">
+                <span class="review-author">Lindiwe P.</span>
+                <span class="review-date">2 weeks ago</span>
+              </div>
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p class="review-text">"Fixed my damaged hair! I use it weekly and my hair is healthier and stronger now."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="related-products">
+      <h2>You Might Also Like</h2>
+      <div class="related-grid">
+        <a href="product_growth-shampoo-pro.html" class="related-card"><div class="related-image"><i class="fas fa-bottle-water"></i></div><div class="related-info"><h3>Growth Shampoo Pro</h3><p style="color: #666; font-size: 14px; margin-bottom: 8px;">Hair care</p><p class="related-price">R199.99</p></div></a>
+        <a href="product_radiant-glow-serum.html" class="related-card"><div class="related-image"><i class="fas fa-droplet"></i></div><div class="related-info"><h3>Radiant Glow Serum</h3><p style="color: #666; font-size: 14px; margin-bottom: 8px;">Skincare serum</p><p class="related-price">R349.99</p></div></a>
+        <a href="product_all-day-foundation.html" class="related-card"><div class="related-image"><i class="fas fa-palette"></i></div><div class="related-info"><h3>All-Day Foundation</h3><p style="color: #666; font-size: 14px; margin-bottom: 8px;">Makeup foundation</p><p class="related-price">R249.99</p></div></a>
+        <a href="product_luxury-skincare-set.html" class="related-card"><div class="related-image"><i class="fas fa-box"></i></div><div class="related-info"><h3>Luxury Skincare Set</h3><p style="color: #666; font-size: 14px; margin-bottom: 8px;">Complete skincare</p><p class="related-price">R2,999.99</p></div></a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column"><h4>Customer Support</h4><ul><li><a href="customer-care.html">Help Centre</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+        <div class="footer-column"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">POPIA Compliance</a></li><li><a href="#">Returns & Refund Policy</a></li></ul></div>
+        <div class="footer-column"><h4>Follow Us</h4><div class="social-links"><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/27123456789" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+      </div>
       <div class="footer-bottom"><p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p></div>
     </div>
   </footer>
-  <script src="../script.js"></script>
+
+  <script src="script.js"></script>
+  <script>
+    function increaseQty() { const input = document.getElementById('quantity'); input.value = Math.max(1, parseInt(input.value) + 1); }
+    function decreaseQty() { const input = document.getElementById('quantity'); input.value = Math.max(1, parseInt(input.value) - 1); }
+    function switchTab(e, tabName) { e.preventDefault(); const headers = document.querySelectorAll('.tab-header'); const contents = document.querySelectorAll('.tab-content'); headers.forEach(h => h.classList.remove('active')); contents.forEach(c => c.classList.remove('active')); e.target.classList.add('active'); document.getElementById(tabName).classList.add('active'); }
+    function addToCart(id, name, price) { const qty = parseInt(document.getElementById('quantity').value); const cart = JSON.parse(localStorage.getItem('nb_cart_v1') || '[]'); const item = { id, name, price, qty }; cart.push(item); localStorage.setItem('nb_cart_v1', JSON.stringify(cart)); alert(`✅ Added ${qty}x ${name} to cart!`); document.getElementById('quantity').value = 1; }
+    function toggleWishlist() { alert('✅ Added to your wishlist!'); }
+    window.addEventListener('load', () => { const cart = JSON.parse(localStorage.getItem('nb_cart_v1') || '[]'); document.getElementById('cartCount').textContent = cart.length; });
+  </script>
 </body>
 </html>

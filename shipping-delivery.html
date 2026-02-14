@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping & Delivery - Nomnotho Beauty Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+        <main class="shipping-page luxury-section">
+            <div class="container">
+                <h1 class="luxury-title"><i class="fas fa-truck"></i> Shipping & Delivery</h1>
+                <div class="shipping-grid">
+                    <section class="shipping-card">
+                        <h2><i class="fas fa-box"></i> Order Processing</h2>
+                        <ul>
+                            <li>All orders are processed within <b>1-2 business days</b> (excluding weekends and holidays).</li>
+                            <li>You will receive an order confirmation email after purchase and a shipping notification with tracking once dispatched.</li>
+                        </ul>
+                    </section>
+                    <section class="shipping-card">
+                        <h2><i class="fas fa-shipping-fast"></i> Delivery Options</h2>
+                        <ul>
+                            <li><b>Standard Shipping:</b> 3-7 business days, R60 flat rate, free for orders over R800.</li>
+                            <li><b>Express Shipping:</b> 1-3 business days, R120 flat rate, available in major cities.</li>
+                            <li>Rural/remote areas may require additional delivery time.</li>
+                        </ul>
+                    </section>
+                    <section class="shipping-card">
+                        <h2><i class="fas fa-map-marker-alt"></i> Delivery Coverage</h2>
+                        <ul>
+                            <li>We deliver throughout South Africa, including all major cities and most rural areas.</li>
+                            <li>International shipping is not available at this time.</li>
+                        </ul>
+                    </section>
+                    <section class="shipping-card">
+                        <h2><i class="fas fa-box-open"></i> Packaging & Handling</h2>
+                        <ul>
+                            <li>All orders are carefully packed to ensure products arrive in perfect condition.</li>
+                            <li>Eco-friendly and recyclable packaging is used wherever possible.</li>
+                        </ul>
+                    </section>
+                    <section class="shipping-card">
+                        <h2><i class="fas fa-search-location"></i> Tracking Your Order</h2>
+                        <ul>
+                            <li>Once shipped, you will receive a tracking link via email or SMS.</li>
+                            <li>You can also track your order in your account dashboard if you registered at checkout.</li>
+                        </ul>
+                    </section>
+                    <section class="shipping-card">
+                        <h2><i class="fas fa-exclamation-circle"></i> Delays & Issues</h2>
+                        <ul>
+                            <li>Delays may occur during peak periods or due to unforeseen circumstances (e.g. weather, strikes).</li>
+                            <li>If your order is late or missing, contact us at <a href="mailto:support@nomnothobeauty.co.za">support@nomnothobeauty.co.za</a> or <a href="contact.html">via our contact form</a>.</li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="shipping-faq luxury-faq">
+                    <h2>Shipping FAQs</h2>
+                    <div class="faq-list" id="shippingFaqList">
+                        <div class="faq-item">
+                            <button class="faq-question">Can I change my shipping address after ordering?</button>
+                            <div class="faq-answer">Contact us immediately after placing your order. If it hasn't shipped, we can update your address.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">What if my package is lost or damaged?</button>
+                            <div class="faq-answer">We will assist in locating lost parcels and replace or refund any items damaged in transit. Please contact us within 48 hours of delivery.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Do you deliver to PO boxes?</button>
+                            <div class="faq-answer">We do not deliver to PO boxes. Please provide a physical address for delivery.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Can I collect my order in person?</button>
+                            <div class="faq-answer">We do not offer in-person collection at this time. All orders are delivered via courier.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Will I need to sign for my delivery?</button>
+                            <div class="faq-answer">Yes, a signature is required on delivery to ensure your order reaches you safely.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-contact">
+                    <h3>Need more help?</h3>
+                    <p>Contact our support team at <a href="mailto:support@nomnothobeauty.co.za">support@nomnothobeauty.co.za</a> or <a href="contact.html">use our contact form</a>.</p>
+                </div>
+                <a href="index.html" class="back-link luxury-back">&larr; Back to Home</a>
+            </div>
+        </main>
+        <script>
+            // FAQ Accordion for shipping page
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.faq-question').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        const answer = this.nextElementSibling;
+                        if (answer.style.maxHeight) {
+                            answer.style.maxHeight = null;
+                        } else {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    });
+                });
+            });
+        </script>
+</body>
+</html>

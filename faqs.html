@@ -25,21 +25,84 @@
   </nav>
 
   <main>
-    <section class="customer-care">
+    <section class="customer-care faqs-section">
       <div class="container">
         <h2>Frequently Asked Questions</h2>
-        <div class="faq-list">
-          <h3>Shipping</h3>
-          <p>We ship within South Africa and offer multiple delivery options. Delivery times depend on your location.</p>
-
-          <h3>Returns</h3>
-          <p>We offer a 14-day returns policy for unopened items in original condition. Contact support to initiate a return.</p>
-
-          <h3>Product Ingredients</h3>
-          <p>All product ingredient lists are available on each product page. We emphasize transparency and cruelty-free formulations.</p>
-
-          <h3>Payment Methods</h3>
-          <p>We accept major credit cards and secure payment gateways. For more, contact our support team.</p>
+        <input type="text" id="faqSearch" placeholder="Search FAQs..." class="faq-search" onkeyup="filterFaqs()">
+        <div class="faq-categories">
+          <button class="faq-category-btn" onclick="filterCategory('all')">All</button>
+          <button class="faq-category-btn" onclick="filterCategory('orders')">Orders</button>
+          <button class="faq-category-btn" onclick="filterCategory('shipping')">Shipping</button>
+          <button class="faq-category-btn" onclick="filterCategory('returns')">Returns</button>
+          <button class="faq-category-btn" onclick="filterCategory('products')">Products</button>
+          <button class="faq-category-btn" onclick="filterCategory('payments')">Payments</button>
+          <button class="faq-category-btn" onclick="filterCategory('account')">Account</button>
+        </div>
+        <div class="faq-list" id="faqList">
+          <div class="faq-item" data-category="orders">
+            <button class="faq-question">How do I place an order?</button>
+            <div class="faq-answer">Add your desired products to the cart, then proceed to checkout and follow the prompts to complete your purchase.</div>
+          </div>
+          <div class="faq-item" data-category="orders">
+            <button class="faq-question">Can I change or cancel my order?</button>
+            <div class="faq-answer">Contact us as soon as possible after placing your order. If it hasn't shipped, we can assist with changes or cancellations.</div>
+          </div>
+          <div class="faq-item" data-category="shipping">
+            <button class="faq-question">What are your shipping options?</button>
+            <div class="faq-answer">We offer standard and express shipping throughout South Africa. Shipping options and costs are shown at checkout.</div>
+          </div>
+          <div class="faq-item" data-category="shipping">
+            <button class="faq-question">How long does delivery take?</button>
+            <div class="faq-answer">Standard delivery takes 3-7 business days. Express delivery is 1-3 business days depending on your location.</div>
+          </div>
+          <div class="faq-item" data-category="returns">
+            <button class="faq-question">What is your return policy?</button>
+            <div class="faq-answer">We accept returns within 14 days of delivery for unused, unopened products in original packaging. Contact support to start a return.</div>
+          </div>
+          <div class="faq-item" data-category="returns">
+            <button class="faq-question">How do I request a refund?</button>
+            <div class="faq-answer">Once your return is received and inspected, we will process your refund within 5 business days to your original payment method.</div>
+          </div>
+          <div class="faq-item" data-category="products">
+            <button class="faq-question">Are your products cruelty-free?</button>
+            <div class="faq-answer">Yes, all our products are cruelty-free and not tested on animals.</div>
+          </div>
+          <div class="faq-item" data-category="products">
+            <button class="faq-question">Where can I find ingredient information?</button>
+            <div class="faq-answer">Ingredients are listed on each product page. If you have allergies, please review these details before purchasing.</div>
+          </div>
+          <div class="faq-item" data-category="payments">
+            <button class="faq-question">What payment methods do you accept?</button>
+            <div class="faq-answer">We accept Visa, Mastercard, and secure online payments via PayFast and PayPal.</div>
+          </div>
+          <div class="faq-item" data-category="payments">
+            <button class="faq-question">Is my payment information secure?</button>
+            <div class="faq-answer">Yes, we use industry-standard SSL encryption and never store your card details on our servers.</div>
+          </div>
+          <div class="faq-item" data-category="account">
+            <button class="faq-question">Do I need an account to order?</button>
+            <div class="faq-answer">No, you can check out as a guest. Creating an account lets you track orders and save your details for next time.</div>
+          </div>
+          <div class="faq-item" data-category="account">
+            <button class="faq-question">How do I reset my password?</button>
+            <div class="faq-answer">Click "Forgot Password" on the login page and follow the instructions to reset your password via email.</div>
+          </div>
+          <div class="faq-item" data-category="products">
+            <button class="faq-question">Do you offer product samples?</button>
+            <div class="faq-answer">We occasionally include free samples with orders and run sample promotions. Follow us on social media for updates.</div>
+          </div>
+          <div class="faq-item" data-category="shipping">
+            <button class="faq-question">Can I track my order?</button>
+            <div class="faq-answer">Yes, you will receive a tracking link by email once your order ships.</div>
+          </div>
+          <div class="faq-item" data-category="returns">
+            <button class="faq-question">What if my item is damaged or incorrect?</button>
+            <div class="faq-answer">Contact us within 48 hours of delivery with photos and we will resolve the issue promptly.</div>
+          </div>
+        </div>
+        <div class="faq-contact">
+          <h3>Still have questions?</h3>
+          <p>Contact our support team at <a href="mailto:support@nomnothobeauty.co.za">support@nomnothobeauty.co.za</a> or <a href="contact.html">use our contact form</a>.</p>
         </div>
       </div>
     </section>
@@ -81,5 +144,41 @@
     </div>
   </footer>
   <script src="script.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const answer = this.nextElementSibling;
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // FAQ Search
+    function filterFaqs() {
+      const input = document.getElementById('faqSearch').value.toLowerCase();
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+    window.filterFaqs = filterFaqs;
+
+    // FAQ Category Filter
+    function filterCategory(cat) {
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (cat === 'all' || item.dataset.category === cat) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+    window.filterCategory = filterCategory;
+  </script>
 </body>
 </html>

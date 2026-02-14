@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns & Refunds - Nomnotho Beauty Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+        <main class="returns-page luxury-section">
+            <div class="container">
+                <h1 class="luxury-title"><i class="fas fa-undo-alt"></i> Returns & Refunds</h1>
+                <div class="returns-grid">
+                    <section class="returns-card">
+                        <h2><i class="fas fa-calendar-check"></i> Return Policy</h2>
+                        <ul>
+                            <li>Returns accepted within <b>14 days</b> of delivery.</li>
+                            <li>Products must be unused, unopened, and in original packaging.</li>
+                            <li>Proof of purchase (order number or receipt) is required.</li>
+                            <li>Some items (e.g. opened cosmetics, gift cards) are non-returnable for hygiene reasons.</li>
+                        </ul>
+                    </section>
+                    <section class="returns-card">
+                        <h2><i class="fas fa-sync-alt"></i> How to Request a Return</h2>
+                        <ul>
+                            <li>Contact us at <a href="mailto:support@nomnothobeauty.co.za">support@nomnothobeauty.co.za</a> or <a href="contact.html">via our contact form</a> with your order details.</li>
+                            <li>We will provide instructions and a return shipping address.</li>
+                            <li>Pack items securely and include your order number inside the parcel.</li>
+                        </ul>
+                    </section>
+                    <section class="returns-card">
+                        <h2><i class="fas fa-shipping-fast"></i> Return Shipping</h2>
+                        <ul>
+                            <li>Return shipping costs are the responsibility of the customer, unless the item is defective or incorrect.</li>
+                            <li>We recommend using a trackable shipping service for your protection.</li>
+                        </ul>
+                    </section>
+                    <section class="returns-card">
+                        <h2><i class="fas fa-money-bill-wave"></i> Refunds</h2>
+                        <ul>
+                            <li>Refunds are processed within <b>5 business days</b> after we receive and inspect your return.</li>
+                            <li>Refunds are issued to your original payment method.</li>
+                            <li>You will receive an email confirmation once your refund is processed.</li>
+                        </ul>
+                    </section>
+                    <section class="returns-card">
+                        <h2><i class="fas fa-exclamation-circle"></i> Damaged or Incorrect Items</h2>
+                        <ul>
+                            <li>If you receive a damaged or incorrect item, contact us within 48 hours of delivery with photos.</li>
+                            <li>We will arrange a replacement or refund at no extra cost to you.</li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="returns-faq luxury-faq">
+                    <h2>Returns & Refunds FAQs</h2>
+                    <div class="faq-list" id="returnsFaqList">
+                        <div class="faq-item">
+                            <button class="faq-question">Can I return opened or used products?</button>
+                            <div class="faq-answer">We only accept returns for unused, unopened products in original packaging, unless the item is defective.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">How long does it take to receive my refund?</button>
+                            <div class="faq-answer">Refunds are processed within 5 business days after we receive and inspect your return. Bank processing times may vary.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">What if I received the wrong product?</button>
+                            <div class="faq-answer">Contact us within 48 hours. We will arrange a replacement or refund for incorrect items at no cost to you.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Do you offer exchanges?</button>
+                            <div class="faq-answer">We do not offer direct exchanges. Please return your item for a refund and place a new order for the desired product.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Are shipping fees refundable?</button>
+                            <div class="faq-answer">Original shipping fees are non-refundable unless the return is due to our error or a defective product.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-contact">
+                    <h3>Need more help?</h3>
+                    <p>Contact our support team at <a href="mailto:support@nomnothobeauty.co.za">support@nomnothobeauty.co.za</a> or <a href="contact.html">use our contact form</a>.</p>
+                </div>
+                <a href="index.html" class="back-link luxury-back">&larr; Back to Home</a>
+            </div>
+        </main>
+        <script>
+            // FAQ Accordion for returns page
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.faq-question').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        const answer = this.nextElementSibling;
+                        if (answer.style.maxHeight) {
+                            answer.style.maxHeight = null;
+                        } else {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    });
+                });
+            });
+        </script>
+</body>
+</html>

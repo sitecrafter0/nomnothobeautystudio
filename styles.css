@@ -1,4 +1,386 @@
 /* ===========================
+     POPIA POLICY PAGE STYLES
+     =========================== */
+.popia-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+}
+.popia-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 32px 28px 24px 28px;
+    border: 1.5px solid var(--light-gray);
+    transition: box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+}
+.popia-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
+}
+.popia-card h2 {
+    font-size: 1.25rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+.popia-card h2 i {
+    margin-right: 8px;
+}
+.popia-card ul {
+    list-style: none;
+    padding: 0;
+    color: var(--text-dark);
+    font-size: 1.07rem;
+}
+.popia-card ul li {
+    margin-bottom: 10px;
+    padding-left: 0.5em;
+    position: relative;
+}
+.popia-card ul li:before {
+    content: '\2022';
+    color: var(--gold);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+.popia-faq {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 32px 24px 18px 24px;
+    margin-bottom: 36px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.popia-faq h2 {
+    color: var(--black);
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+@media (max-width: 900px) {
+    .popia-grid { grid-template-columns: 1fr; gap: 22px; }
+}
+/* ===========================
+     RETURNS & REFUNDS PAGE STYLES
+     =========================== */
+.returns-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+}
+.returns-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 32px 28px 24px 28px;
+    border: 1.5px solid var(--light-gray);
+    transition: box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+}
+.returns-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
+}
+.returns-card h2 {
+    font-size: 1.25rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+.returns-card h2 i {
+    margin-right: 8px;
+}
+.returns-card ul {
+    list-style: none;
+    padding: 0;
+    color: var(--text-dark);
+    font-size: 1.07rem;
+}
+.returns-card ul li {
+    margin-bottom: 10px;
+    padding-left: 0.5em;
+    position: relative;
+}
+.returns-card ul li:before {
+    content: '\2022';
+    color: var(--gold);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+.returns-faq {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 32px 24px 18px 24px;
+    margin-bottom: 36px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.returns-faq h2 {
+    color: var(--black);
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+@media (max-width: 900px) {
+    .returns-grid { grid-template-columns: 1fr; gap: 22px; }
+}
+/* ===========================
+     SHIPPING & DELIVERY PAGE STYLES
+     =========================== */
+.luxury-section {
+    background: var(--ivory);
+    padding: 60px 0 40px 0;
+}
+.luxury-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-bottom: 36px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.luxury-title i {
+    color: var(--gold);
+    margin-right: 12px;
+}
+.shipping-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+}
+.shipping-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 32px 28px 24px 28px;
+    border: 1.5px solid var(--light-gray);
+    transition: box-shadow 0.2s;
+}
+.shipping-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+.shipping-card h2 {
+    font-size: 1.25rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+.shipping-card h2 i {
+    margin-right: 8px;
+}
+.shipping-card ul {
+    list-style: none;
+    padding: 0;
+    color: var(--text-dark);
+    font-size: 1.07rem;
+}
+.shipping-card ul li {
+    margin-bottom: 10px;
+    padding-left: 0.5em;
+    position: relative;
+}
+.shipping-card ul li:before {
+    content: '\2022';
+    color: var(--gold);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+.luxury-faq {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 32px 24px 18px 24px;
+    margin-bottom: 36px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.luxury-faq h2 {
+    color: var(--black);
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+.luxury-back {
+    display: block;
+    margin: 40px auto 0 auto;
+    text-align: center;
+    color: var(--black);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+.luxury-back:hover {
+    color: var(--gold);
+}
+@media (max-width: 900px) {
+    .shipping-grid { grid-template-columns: 1fr; gap: 22px; }
+    .luxury-section { padding: 30px 0 10px 0; }
+}
+/* ===========================
+     FAQ PAGE STYLES
+     =========================== */
+.faqs-section {
+    background: var(--ivory);
+    padding: 60px 0 40px 0;
+}
+.faqs-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-bottom: 32px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.faq-search {
+    display: block;
+    margin: 0 auto 32px auto;
+    padding: 14px 22px;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 30px;
+    border: 1.5px solid var(--gold);
+    font-size: 1.1rem;
+    background: #fff;
+    box-shadow: var(--shadow);
+    outline: none;
+    transition: border 0.3s;
+}
+.faq-search:focus {
+    border-color: var(--black);
+}
+.faq-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+.faq-category-btn {
+    background: var(--white);
+    color: var(--black);
+    border: 1.5px solid var(--gold);
+    border-radius: 22px;
+    padding: 10px 26px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 4px;
+}
+.faq-category-btn:hover, .faq-category-btn.active {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--black);
+}
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto 36px auto;
+}
+.faq-item {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 18px;
+    overflow: hidden;
+    border: 1.5px solid var(--light-gray);
+    transition: box-shadow 0.2s;
+}
+.faq-item:hover {
+    box-shadow: var(--shadow-lg);
+}
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--black);
+    padding: 22px 32px 18px 32px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+.faq-question:after {
+    content: '\25BC';
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    font-size: 1.1rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+}
+.faq-question.active:after {
+    transform: translateY(-50%) rotate(180deg);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background: #faf8f3;
+    color: var(--text-dark);
+    font-size: 1.05rem;
+    padding: 0 32px;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+}
+.faq-question.active + .faq-answer {
+    padding: 0 32px 22px 32px;
+}
+.faq-contact {
+    text-align: center;
+    margin-top: 40px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 32px 20px 24px 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.faq-contact h3 {
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+.faq-contact a {
+    color: var(--black);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.faq-contact a:hover {
+    color: var(--gold);
+}
+@media (max-width: 900px) {
+    .faq-list { max-width: 98vw; }
+}
+@media (max-width: 600px) {
+    .faqs-section { padding: 30px 0 10px 0; }
+    .faq-question, .faq-answer { padding-left: 14px; padding-right: 14px; }
+    .faq-contact { padding: 18px 6px 14px 6px; }
+}
+/* ===========================
    GLOBAL STYLES - IVORY & BLACK LUXURY
    =========================== */
 
@@ -575,6 +957,14 @@ body {
     margin-bottom: 1rem;
     font-size: 3rem;
     color: var(--light-gray);
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .product-card h3 {
@@ -1951,5 +2341,41 @@ body {
     .related-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Product Page Images - Fix sizing */
+.product-main-image {
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.product-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.product-thumbnails .thumbnail {
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.product-thumbnails .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.related-image {
+    overflow: hidden;
+}
+
+.related-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 

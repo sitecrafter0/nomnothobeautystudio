@@ -260,7 +260,7 @@
       <div class="footer-grid">
         <div class="footer-column"><h4>Customer Support</h4><ul><li><a href="customer-care.html">Help Centre</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
         <div class="footer-column"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">POPIA Compliance</a></li><li><a href="#">Returns & Refund Policy</a></li></ul></div>
-        <div class="footer-column"><h4>Follow Us</h4><div class="social-links"><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/27123456789" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+        <div class="footer-column"><h4>Follow Us</h4><div class="social-links"><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/27761286545" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
       </div>
       <div class="footer-bottom"><p>&copy; 2024 Nomnotho Beauty Studio. All rights reserved.</p></div>
     </div>
@@ -271,9 +271,9 @@
     function increaseQty() { const input = document.getElementById('quantity'); input.value = Math.max(1, parseInt(input.value) + 1); }
     function decreaseQty() { const input = document.getElementById('quantity'); input.value = Math.max(1, parseInt(input.value) - 1); }
     function switchTab(e, tabName) { e.preventDefault(); const headers = document.querySelectorAll('.tab-header'); const contents = document.querySelectorAll('.tab-content'); headers.forEach(h => h.classList.remove('active')); contents.forEach(c => c.classList.remove('active')); e.target.classList.add('active'); document.getElementById(tabName).classList.add('active'); }
-    function addToCart(id, name, price) { const qty = parseInt(document.getElementById('quantity').value); const cart = JSON.parse(localStorage.getItem('nb_cart_v1') || '[]'); const item = { id, name, price, qty }; cart.push(item); localStorage.setItem('nb_cart_v1', JSON.stringify(cart)); alert(`✅ Added ${qty}x ${name} to cart!`); document.getElementById('quantity').value = 1; }
+    function addToCart(id, name, price) { const qty = parseInt(document.getElementById('quantity').value) || 1; const cart = JSON.parse(localStorage.getItem('nb_cart_v1') || '[]'); const item = { id, name, price: parseFloat(price), qty }; cart.push(item); localStorage.setItem('nb_cart_v1', JSON.stringify(cart)); const totalQty = cart.reduce((s, i) => s + (parseInt(i.qty) || 1), 0); const cartCount = document.getElementById('cartCount'); if (cartCount) cartCount.textContent = totalQty; alert(`✅ Added ${qty}x ${name} to cart!`); document.getElementById('quantity').value = 1; }
     function toggleWishlist() { alert('✅ Added to your wishlist!'); }
-    window.addEventListener('load', () => { const cart = JSON.parse(localStorage.getItem('nb_cart_v1') || '[]'); document.getElementById('cartCount').textContent = cart.length; });
+    window.addEventListener('load', () => { const cart = JSON.parse(localStorage.getItem('nb_cart_v1') || '[]'); const totalQty = cart.reduce((s, i) => s + (parseInt(i.qty) || 1), 0); document.getElementById('cartCount').textContent = totalQty; });
   </script>
 </body>
 </html>

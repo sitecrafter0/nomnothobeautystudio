@@ -345,7 +345,7 @@
           <div class="social-links">
             <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/27123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/27761286545" target="_blank"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
       </div>
@@ -378,14 +378,20 @@
     }
 
     function addToCart(id, name, price) {
-      const qty = parseInt(document.getElementById('quantity').value);
+      const qty = parseInt(document.getElementById('quantity').value) || 1;
       const cart = JSON.parse(localStorage.getItem('nb_cart_v1') || '[]');
       
-      const item = { id, name, price, qty };
+      const item = { id, name, price: parseFloat(price), qty };
       cart.push(item);
       
       localStorage.setItem('nb_cart_v1', JSON.stringify(cart));
-      alert(` Added ${qty}x ${name} to cart!`);
+      
+      // Update cart count
+      const totalQty = cart.reduce((sum, i) => sum + (parseInt(i.qty) || 1), 0);
+      const cartCount = document.getElementById('cartCount');
+      if (cartCount) cartCount.textContent = totalQty;
+      
+      alert(`✅ Added ${qty}x ${name} to cart!`);
       document.getElementById('quantity').value = 1;
     }
 

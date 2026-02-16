@@ -39,14 +39,63 @@
               <div class="form-group"><input id="billPhone" type="tel" placeholder="Phone" required></div>
               <div class="form-group"><input id="billAddress" type="text" placeholder="Address" required></div>
 
-              <h3>Payment</h3>
-              <div class="form-group">
-                <label class="small">Card number</label>
-                <input id="cardNumber" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" required />
+              <h3>Select Payment Method</h3>
+              <div style="margin-bottom: 20px;">
+                <label style="display: flex; align-items: center; margin-bottom: 12px; cursor: pointer;">
+                  <input type="radio" name="paymentMethod" value="yoco" checked style="margin-right: 10px;">
+                  <span><strong>Yoco</strong> - Debit/Credit Card</span>
+                </label>
+                <label style="display: flex; align-items: center; margin-bottom: 12px; cursor: pointer;">
+                  <input type="radio" name="paymentMethod" value="payfast" style="margin-right: 10px;">
+                  <span><strong>Payfast</strong> - Multiple Payment Methods</span>
+                </label>
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="radio" name="paymentMethod" value="ozow" style="margin-right: 10px;">
+                  <span><strong>Ozow</strong> - EFT & Card Payments</span>
+                </label>
               </div>
-              <div style="display:flex;gap:12px;margin-bottom:12px">
-                <div style="flex:1"><label class="small">Expiry</label><input id="cardExp" type="text" placeholder="MM/YY" required /></div>
-                <div style="width:120px"><label class="small">CVC</label><input id="cardCvc" type="text" inputmode="numeric" placeholder="123" required /></div>
+
+              <!-- YOCO PAYMENT -->
+              <div id="yocoSection" class="payment-section">
+                <h3>Card Details</h3>
+                <div class="form-group">
+                  <label class="small">Card number</label>
+                  <input id="yocoCardNumber" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" />
+                </div>
+                <div style="display:flex;gap:12px;margin-bottom:12px">
+                  <div style="flex:1"><label class="small">Expiry</label><input id="yocoCardExp" type="text" placeholder="MM/YY" /></div>
+                  <div style="width:120px"><label class="small">CVC</label><input id="yocoCardCvc" type="text" inputmode="numeric" placeholder="123" /></div>
+                </div>
+              </div>
+
+              <!-- PAYFAST PAYMENT -->
+              <div id="payfastSection" class="payment-section" style="display:none;">
+                <h3>Payfast Payment</h3>
+                <p style="font-size: 14px; color: #666; margin-bottom: 12px;">You will be redirected to Payfast to complete your payment securely.</p>
+                <div class="form-group">
+                  <label class="small">Payment Method</label>
+                  <select id="payfastMethod" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="">Select payment method</option>
+                    <option value="creditcard">Credit Card</option>
+                    <option value="debitcard">Debit Card</option>
+                    <option value="bankeft">Bank Transfer (EFT)</option>
+                    <option value="wallet">Digital Wallet</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- OZOW PAYMENT -->
+              <div id="ozowSection" class="payment-section" style="display:none;">
+                <h3>Ozow Payment</h3>
+                <p style="font-size: 14px; color: #666; margin-bottom: 12px;">You will be redirected to Ozow to complete your payment securely.</p>
+                <div class="form-group">
+                  <label class="small">Payment Method</label>
+                  <select id="ozowMethod" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="">Select payment method</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="eft">Bank Transfer (EFT)</option>
+                  </select>
+                </div>
               </div>
 
               <h3>Order Total: <span id="checkoutTotal">R0.00</span></h3>
@@ -87,7 +136,7 @@
           <div class="social-links">
             <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/27123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/27761286545" target="_blank"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
         <div class="footer-column">
@@ -99,5 +148,14 @@
     </div>
   </footer>
   <script src="script.js"></script>
+  <script src="payments.js"></script>
+  
+  <!-- Payment Gateway SDKs -->
+  <!-- Yoco: Uncomment when ready -->
+  <!-- <script src="https://js.yoco.com/releases/latest/yoco.js"></script> -->
+  
+  <!-- Payfast: Uses URL redirect (no SDK needed) -->
+  
+  <!-- Ozow: Uses URL redirect (no SDK needed) -->
 </body>
 </html>

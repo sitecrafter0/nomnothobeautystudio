@@ -1,0 +1,178 @@
+# PAYMENT SETUP - QUICK REFERENCE
+
+**Print this page or save it for quick access while setting up your payment gateways.**
+
+---
+
+## QUICK LINKS
+
+| Gateway | Setup URL | Support |
+|---------|-----------|---------|
+| **Yoco** | https://dashboard.yoco.com | https://support.yoco.com |
+| **Payfast** | https://www.payfast.co.za | https://support.payfast.co.za |
+| **Ozow** | https://www.ozow.com | https://support.ozow.com |
+
+---
+
+## WHAT YOU NEED - 3 MINUTE SUMMARY
+
+### Create Account
+1. Go to payment provider website (see links above)
+2. Sign up as a merchant
+3. Verify your email
+4. Verify your business info
+
+### Get Credentials  
+Look for these in your dashboard and save them:
+
+**YOCO:**
+```
+Public Key: pk_test_xxxxxxxxxxxxx
+Secret Key: sk_test_xxxxxxxxxxxxx
+```
+
+**PAYFAST:**
+```
+Merchant ID: 10012345
+Merchant Key: xxxxxxxxxxxxx
+Passphrase: (optional but recommended)
+```
+
+**OZOW:**
+```
+API Key: xxxxxxxxxxxxx
+Merchant ID: xxxxxxxxxxxxx
+Account ID: xxxxxxxxxxxxx
+```
+
+### Send to Developer
+Put credentials in a secure message with:
+- Your payment provider credentials (above)
+- Your website domain (e.g., https://nomnothobeauty.co.za)
+- Your hosting provider name
+
+---
+
+## TEST BEFORE GOING LIVE ✅
+
+| Gateway | Test Card | Result |
+|---------|-----------|--------|
+| Yoco | 4242 4242 4242 4242 | No charge |
+| Payfast | Check dashboard | No charge |
+| Ozow | Check dashboard | No charge |
+
+**All test transactions are** **FREE** - No real money charged.
+
+---
+
+## WHICH GATEWAY? 
+
+Choose based on your needs:
+
+| Need | Choose |
+|------|--------|
+| Credit/Debit cards only | Yoco |
+| Multiple payment methods | Payfast |
+| Bank transfer + cards | Ozow |
+| Maximum options | All three |
+
+---
+
+## IMPORTANT REMINDERS
+
+🔒 **Security:**
+- Never share credentials publicly
+- Use secure messaging only
+- Check website has 🔒 lock icon before payment
+
+⏱️ **Timeline:**
+- Setup testing: 2-3 days
+- Full testing: 1 week  
+- Go live: Whenever you're ready
+
+💰 **Cost:**
+- Test accounts: FREE
+- Live accounts: FREE
+- Transactions: ~2-2.8% fee per sale
+
+---
+
+## CREDENTIALS CHECKLIST
+
+Before sending to developer, verify you have:
+
+**For Yoco:**
+- [ ] Test Public Key
+- [ ] Test Secret Key
+
+**For Payfast:**
+- [ ] Merchant ID
+- [ ] Merchant Key
+- [ ] Security Passphrase (optional)
+
+**For Ozow:**
+- [ ] API Key
+- [ ] Merchant ID
+- [ ] Account ID
+
+**General:**
+- [ ] Your website domain
+- [ ] Hosting provider info
+
+---
+
+## TROUBLESHOOTING
+
+| Problem | Solution |
+|---------|----------|
+| Can't find credentials | Check Settings/API section of dashboard |
+| Dashboard looks different | Each provider updates regularly - look for API or Security section |
+| Keep forgetting credentials | Take screenshots and save in secure document |
+| Lost credentials | Reset them in dashboard settings |
+
+---
+
+## FIRST TEST TRANSACTION
+
+1. ✅ Go to your website checkout
+2. ✅ Fill in test customer info
+3. ✅ Select payment method
+4. ✅ Use test credit card (see above)
+5. ✅ Complete "payment"
+6. ✅ Check for success message
+7. ✅ See order in your system
+8. ✅ Check payment provider dashboard
+
+**Expected:** Everything works, no money charged ✅
+
+---
+
+## GOING LIVE
+
+When credentials work in test mode:
+
+1. Payment provider gives you LIVE keys
+2. Developer updates credentials to LIVE
+3. Test with small real amount (R1-10)
+4. Verify money goes to your account
+5. Launch website!
+
+---
+
+## 24/7 SUPPORT
+
+Each payment provider has:
+- Email support
+- Chat support  
+- Knowledge base
+
+Use these if you have questions about their service.
+
+---
+
+**Print This Page For Quick Access 📋**
+
+---
+
+**Status:** Ready to setup  
+**Last updated:** Feb 16, 2026

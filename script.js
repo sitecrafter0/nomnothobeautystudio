@@ -76,7 +76,12 @@ function updateCartCount() {
 }
 
 // Initialize cart count on page load
-document.addEventListener('DOMContentLoaded', () => updateCartCount());
+document.addEventListener('DOMContentLoaded', () => {
+    const cart = getCart();
+    const count = cart.reduce((s, i) => s + (parseInt(i.qty) || 1), 0);
+    const cartCount = document.getElementById('cartCount');
+    if (cartCount) cartCount.textContent = count;
+});
 
 // Add to Cart buttons (works on list cards and single product pages)
 document.querySelectorAll('.btn-add-cart').forEach(button => {
@@ -170,16 +175,21 @@ function renderCartPage() {
     }
     let subtotal = 0;
     cart.forEach(item => {
+        const itemPrice = parseFloat(item.price) || 0;
+        const itemQty = parseInt(item.qty) || 1;
+        const itemTotal = itemPrice * itemQty;
+        
         const row = document.createElement('div');
         row.className = 'cart-row';
         row.innerHTML = `
             <div class="cart-item-name">${item.name}</div>
-            <div class="cart-item-qty">Qty: <input type="number" min="1" value="${item.qty}" data-id="${item.id}" class="cart-qty-input" /></div>
-            <div class="cart-item-price">R${(item.price).toFixed(2)}</div>
+            <div class="cart-item-qty">Qty: <input type="number" min="1" value="${itemQty}" data-id="${item.id}" class="cart-qty-input" /></div>
+            <div class="cart-item-price">R${itemPrice.toFixed(2)}</div>
+            <div class="cart-item-total">Total: R${itemTotal.toFixed(2)}</div>
             <div class="cart-item-remove"><button class="btn-remove" data-id="${item.id}">Remove</button></div>
         `;
         list.appendChild(row);
-        subtotal += (item.price * (item.qty || 1));
+        subtotal += itemTotal;
     });
     if (subtotalEl) subtotalEl.textContent = `R${subtotal.toFixed(2)}`;
     const totalEl = document.getElementById('cartTotal');
@@ -190,6 +200,10 @@ function renderCartPage() {
         input.addEventListener('change', (e) => {
             const id = input.dataset.id;
             const val = parseInt(input.value) || 1;
+            if (val < 1) {
+                input.value = 1;
+                return;
+            }
             const cart = getCart();
             const item = cart.find(i => i.id === id);
             if (item) {
@@ -202,6 +216,7 @@ function renderCartPage() {
 
     document.querySelectorAll('.btn-remove').forEach(btn => {
         btn.addEventListener('click', (e) => {
+            e.preventDefault();
             const id = btn.dataset.id;
             removeFromCart(id);
             renderCartPage();
@@ -225,46 +240,138 @@ function renderCheckoutPage() {
     cart.forEach(item => {
         const li = document.createElement('div');
         li.className = 'checkout-item';
-        li.innerHTML = `<div>${item.name} x ${item.qty}</div><div>R${(item.price*item.qty).toFixed(2)}</div>`;
+        const itemPrice = parseFloat(item.price) || 0;
+        const itemQty = parseInt(item.qty) || 1;
+        const itemTotal = itemPrice * itemQty;
+        li.innerHTML = `<div>${item.name} x ${itemQty}</div><div>R${itemTotal.toFixed(2)}</div>`;
         orderList.appendChild(li);
-        total += item.price * item.qty;
+        total += itemTotal;
     });
     if (totalEl) totalEl.textContent = `R${total.toFixed(2)}`;
 
+    // Payment method selector
+    const paymentMethodRadios = document.querySelectorAll('input[name="paymentMethod"]');
+    const yocoSection = document.getElementById('yocoSection');
+    const payfastSection = document.getElementById('payfastSection');
+    const ozowSection = document.getElementById('ozowSection');
+
+    if (paymentMethodRadios.length > 0) {
+        paymentMethodRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const method = e.target.value;
+                // Hide all sections
+                if (yocoSection) yocoSection.style.display = 'none';
+                if (payfastSection) payfastSection.style.display = 'none';
+                if (ozowSection) ozowSection.style.display = 'none';
+                
+                // Show selected section
+                if (method === 'yoco' && yocoSection) yocoSection.style.display = 'block';
+                else if (method === 'payfast' && payfastSection) payfastSection.style.display = 'block';
+                else if (method === 'ozow' && ozowSection) ozowSection.style.display = 'block';
+            });
+        });
+    }
+
     const checkoutForm = document.getElementById('checkoutForm');
     if (checkoutForm) {
-        checkoutForm.addEventListener('submit', (e) => {
+        checkoutForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const checkoutMessage = document.getElementById('checkoutMessage');
             const payBtn = document.getElementById('payNowBtn');
             const spinner = document.getElementById('paySpinner');
 
-            // Basic validation for billing and card inputs (demo only)
+            // Basic validation for billing details
             const name = document.getElementById('billName').value.trim();
             const email = document.getElementById('billEmail').value.trim();
             const phone = document.getElementById('billPhone').value.trim();
             const address = document.getElementById('billAddress').value.trim();
-            const cardNum = document.getElementById('cardNumber').value.replace(/\s+/g, '');
-            const cardExp = document.getElementById('cardExp').value.trim();
-            const cardCvc = document.getElementById('cardCvc').value.trim();
 
-            if (!name || !email || !phone || !address) { checkoutMessage.textContent = 'Please complete billing details.'; return; }
-            if (!/^[0-9]{12,19}$/.test(cardNum)) { checkoutMessage.textContent = 'Enter a valid card number (demo).' ; return; }
-            if (!/^[0-9]{3,4}$/.test(cardCvc)) { checkoutMessage.textContent = 'Enter a valid CVC (demo).'; return; }
+            if (!name || !email || !phone || !address) {
+                checkoutMessage.textContent = 'Please complete billing details.';
+                return;
+            }
 
-            // Simulate payment processing
-            checkoutMessage.textContent = '';
-            payBtn.disabled = true; spinner.style.display = 'inline-block';
+            // Get selected payment method
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            
+            // Validate payment method specific fields
+            if (selectedMethod === 'yoco') {
+                const cardNum = document.getElementById('yocoCardNumber').value.replace(/\s+/g, '');
+                const cardCvc = document.getElementById('yocoCardCvc').value.trim();
+                if (!/^[0-9]{12,19}$/.test(cardNum) || !/^[0-9]{3,4}$/.test(cardCvc)) {
+                    checkoutMessage.textContent = 'Please enter valid card details.';
+                    return;
+                }
+            } else if (selectedMethod === 'payfast') {
+                const method = document.getElementById('payfastMethod').value;
+                if (!method) {
+                    checkoutMessage.textContent = 'Please select a payment method.';
+                    return;
+                }
+            } else if (selectedMethod === 'ozow') {
+                const method = document.getElementById('ozowMethod').value;
+                if (!method) {
+                    checkoutMessage.textContent = 'Please select a payment method.';
+                    return;
+                }
+            }
 
-            setTimeout(() => {
-                // Simulated payment success
-                const orderId = 'NB' + Date.now();
-                const order = { id: orderId, name, email, total: total.toFixed(2), items: cart };
-                try { localStorage.setItem('nb_last_order', JSON.stringify(order)); } catch (err) {}
-                clearCart();
-                // Redirect to confirmation page
-                window.location.href = 'order-confirmation.html';
-            }, 1400);
+            try {
+                checkoutMessage.textContent = '';
+                payBtn.disabled = true;
+                spinner.style.display = 'inline-block';
+
+                // ========================================
+                // VALIDATE CART AND AMOUNT - CRITICAL SECURITY
+                // ========================================
+                const cart = JSON.parse(localStorage.getItem('nb_cart_v1') || '[]');
+                
+                if (!cart || cart.length === 0) {
+                    throw new Error('Your cart is empty. Please add items to checkout.');
+                }
+                
+                // Calculate cart total
+                const cartTotal = cart.reduce((sum, item) => {
+                    const itemPrice = parseFloat(item.price) || 0;
+                    const itemQty = parseInt(item.qty) || 1;
+                    return sum + (itemPrice * itemQty);
+                }, 0);
+                
+                if (cartTotal <= 0) {
+                    throw new Error('Invalid cart total: ' + cartTotal + '. Please verify your cart items.');
+                }
+                
+                // Log for audit trail
+                console.log('Checkout validation: Cart Total=' + cartTotal.toFixed(2) + ', Items=' + cart.length);
+
+                // Create order
+                const customerData = { name, email, phone, address };
+                const orderData = await paymentHandler.createOrder(customerData);
+                
+                // Verify order amount matches cart total
+                if (Math.abs(orderData.amount - cartTotal) > 0.01) {
+                    throw new Error('Order amount mismatch. Please refresh and try again.');
+                }
+                
+                // Process payment with selected gateway
+                const result = await paymentHandler.processPayment(selectedMethod, orderData, customerData);
+
+                if (result.success) {
+                    // Payment successful
+                    clearCart();
+                    window.location.href = 'order-confirmation.html';
+                } else if (result.pending) {
+                    // Redirect payment (Payfast/Ozow)
+                    // User will be redirected by payment handler
+                } else {
+                    throw new Error('Payment processing failed');
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+                checkoutMessage.textContent = 'Error: ' + error.message;
+                payBtn.disabled = false;
+                spinner.style.display = 'none';
+            }
         });
     }
 }
